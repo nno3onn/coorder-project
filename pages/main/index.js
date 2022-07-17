@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
+import Bottom from 'components/modal-test';
 
-import Loading from 'components/loading';
-import Nav from 'components/nav';
+// import Loading from 'components/loading';
+// import Nav from 'components/nav';
 
 const Main = () => {
-  const [loading, setLoading] = useState(true);
+  return <Bottom />;
+  // const [loading, setLoading] = useState(true);
 
-  const [step, setStep] = useState(1);
+  // const [step, setStep] = useState(1);
 
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 2000);
-  });
+  // useEffect(() => {
+  //   setTimeout(() => setLoading(false), 2000);
+  // });
 
-  return loading ? (
-    <Loading />
-  ) : (
-    <div>
-      <Nav></Nav>
-    </div>
-  );
+  // return loading ? (
+  //   <Loading />
+  // ) : (
+  //   <div>
+  //     <Nav />
+  //   </div>
+  // );
 };
 
 export default Main;
