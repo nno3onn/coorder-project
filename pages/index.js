@@ -1,14 +1,13 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import BottomModal from 'components/modal';
 
 function Home() {
-  const router = useRouter();
+  // const router = useRouter();
+  // useEffect(() => {
+  //   router.push('/main');
+  // }, []);
+  // return null;
 
-  useEffect(() => {
-    router.push('/main');
-  }, []);
-
-  return null;
+  return <BottomModal />;
 }
 
 export default Home;
