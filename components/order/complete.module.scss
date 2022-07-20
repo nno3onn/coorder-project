@@ -1,0 +1,27 @@
+@import '/styles/color.scss';
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: $color-primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $color-white;
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  .logo {
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+  .txt {
+    font-weight: bold;
+    font-size: 36px;
+  }
+}

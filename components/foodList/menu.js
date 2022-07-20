@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useState, useEffect } from 'react';
 
 import styles from './menu.module.scss';
 
 const FoodMenu = ({ data }) => {
+  const router = useRouter();
+  const { storeName } = router.query;
+
   const [type, setType] = useState();
+
+  useEffect(() => {
+    if (data) {
+      setType(Object.keys(data[0])[0]);
+    }
+  }, [data]);
 
   return (
     <div className={styles.container}>
@@ -29,13 +39,13 @@ const FoodMenu = ({ data }) => {
                 <div className={styles['menu-wrapper']}>
                   {v.map((info) => (
                     <>
-                      <div className={styles['food-wrapper']}>
+                      <a href={`/store/${storeName}/food/${info.name}`} className={styles['food-wrapper']}>
                         <div className={styles.img} />
                         <div className={styles.info}>
                           <div className={styles.name}>{info.name}</div>
                           <div className={styles.cost}>{info.cost.toLocaleString()}원</div>
                         </div>
-                      </div>
+                      </a>
                       <div className={styles.border} />
                     </>
                   ))}

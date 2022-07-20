@@ -1,5 +1,16 @@
-import MainPage from './main';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
+
+import Loading from 'components/loading';
 
 export default function Home() {
-  return <MainPage />;
+  const router = useRouter();
+
+  useEffect(() => {
+    setTimeout(() => {
+      router.push('/main');
+    }, 1000);
+  }, []);
+
+  return <Loading />;
 }

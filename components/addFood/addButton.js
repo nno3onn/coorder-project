@@ -1,20 +1,9 @@
-import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-contents: center;
-`;
-
-const Button = styled.div`
-  color: white;
-  background-color: '#f96421';
-  padding: 20px 60px;
-`;
+import styles from './addButton.module.scss';
 
 const AddButton = () => (
-  <Wrapper>
-    <Button>주문하기</Button>
-  </Wrapper>
+  <div className={styles.container}>
+    <div className={styles.btn}>추가하기</div>
+  </div>
 );
 
 export default AddButton;
