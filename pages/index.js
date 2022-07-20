@@ -1,13 +1,5 @@
-import BottomModal from 'components/modal';
+import MainPage from './main';
 
-function Home() {
-  // const router = useRouter();
-  // useEffect(() => {
-  //   router.push('/main');
-  // }, []);
-  // return null;
-
-  return <BottomModal />;
+export default function Home() {
+  return <MainPage />;
 }
-
-export default Home;

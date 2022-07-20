@@ -1,25 +1,20 @@
 import React, { useState } from 'react';
 import { BottomSheet } from 'react-spring-bottom-sheet';
 
+import ModalButton from './button';
+import ModalContents from './contents';
+
 import 'react-spring-bottom-sheet/dist/style.css';
 
-export default function Modal() {
+export default function Modal({ place, setPlace, time, setTime }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <button type="button" onClick={() => setOpen(true)}>
-        Open
-      </button>
+    <div>
+      <ModalButton setOpen={setOpen} />
       <BottomSheet open={open} onDismiss={() => setOpen(false)}>
-        My awesome content here Open
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        <ModalContents setOpen={setOpen} place={place} setPlace={setPlace} time={time} setTime={setTime} />
       </BottomSheet>
-    </>
+    </div>
   );
 }

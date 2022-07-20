@@ -18,6 +18,15 @@ module.exports = {
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
     'react/jsx-props-no-spreading': 0,
+    'implicit-arrow-linebreak': 0,
+    'react/function-component-definition': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interaction': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
+    'max-len': 0,
+    indent: 0,
+    'function-paren-newline': 0,
+    'react/jsx-one-expression-per-line': 0,
   },
   // jsconfig.json 적용
   settings: {

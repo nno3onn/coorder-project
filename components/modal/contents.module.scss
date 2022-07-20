@@ -1,0 +1,77 @@
+@import '/styles/color.scss';
+
+.container {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.border {
+  background-color: $color-border;
+  width: 100%;
+  height: 2px;
+  margin: 40px 0;
+}
+
+.desc {
+  text-align: center;
+  font-weight: 400;
+  color: $color-grey-1;
+  font-size: 13px;
+  margin-bottom: 30px;
+  line-height: 18px;
+}
+
+.contents-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.btn-1,
+.btn-2,
+.btn-complete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  font-weight: bold;
+  border-radius: 20px;
+  color: $color-white;
+  background-color: $color-grey-2;
+  cursor: pointer;
+}
+.btn-1:hover,
+.btn-2:hover,
+.btn-complete:hover,
+.selected {
+  background-color: $color-primary;
+}
+.btn-1 {
+  width: 400px;
+  padding: 20px;
+  margin: 10px;
+  height: 70px;
+}
+.btn-2 {
+  padding: 18px;
+}
+
+.btn-complete {
+  font-weight: bolder;
+  font-size: 20px;
+
+  height: 60px;
+  padding: 10px 40px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}

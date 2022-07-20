@@ -1,0 +1,13 @@
+.container {
+  position: fixed;
+  z-index: 999;
+  bottom: 30px;
+  right: 30px;
+  &:hover {
+    cursor: pointer;
+  }
+
+  img {
+    width: 70px;
+  }
+}
