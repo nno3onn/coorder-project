@@ -29,6 +29,7 @@ module.exports = {
     'react/jsx-one-expression-per-line': 0,
     'react/jsx-no-useless-fragment': 0,
     'no-unused-vars': 0,
+    'object-curly-newline': 0,
   },
   // jsconfig.json 적용
   settings: {
