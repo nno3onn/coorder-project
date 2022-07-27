@@ -1,7 +1,11 @@
-const place1 = ['누리관 남자관 앞 1층 중앙출입구', '누리관 여자관 앞 1층 중앙출입구'];
-const place2 = ['첨성관 1층 gs25 앞', '향토관 1층 중앙출입구'];
+const places = [
+  '누리관 남자관 앞 1층 중앙출입구',
+  '누리관 여자관 앞 1층 중앙출입구',
+  '첨성관 1층 gs25 앞',
+  '향토관 1층 중앙출입구',
+];
 
-const time = ['12:00', '01:00', '18:00', '19:00'];
+const times = ['12:00', '01:00', '18:00', '19:00'];
 
 const store = ['한반도', '맘스터치', '한솥', '이삭토스트'];
 const menu = {
@@ -23,6 +27,6 @@ const menu = {
   ],
 };
 
-const dataConfigs = { place1, place2, time, store, menu };
+const dataConfigs = { places, times, store, menu };
 
 export default dataConfigs;

@@ -1,28 +1,28 @@
+import { useSelector, useDispatch } from 'react-redux';
+
+import PrimaryButton from 'components/base/button/primary';
 import dataConfigs from 'configs/data';
 
+import { updatPlaceAction } from 'lib/store/modules/placeReducer';
+import { updateTimeAction } from 'lib/store/modules/timeReducer';
 import styles from './contents.module.scss';
 
-export default function ModalContents({ setOpen, place, setPlace, time, setTime }) {
-  const { place1, place2 } = dataConfigs;
-  const arrTime = dataConfigs.time;
+export default function ModalContents({ setOpen }) {
+  const dispatch = useDispatch();
+  const { places, times } = dataConfigs;
+  const { placeReducer, timeReducer } = useSelector((state) => state);
 
-  const onPlace = (p) => setPlace(p);
-  const onTime = (t) => setTime(t);
+  const onPlace = (p) => () => dispatch(updatPlaceAction({ selectedPlace: p }));
+  const onTime = (t) => () => dispatch(updateTimeAction({ selectedTime: t }));
+  const onComplete = () => setOpen(false);
 
   return (
     <div className={styles.container}>
       <div className={styles.title}>음식을 수령 받을 장소를 선택해주세요</div>
       <div className={styles['contents-wrapper']}>
-        {place1.map((p) => (
-          <div className={`${styles['btn-1']} ${place === p ? styles.selected : ''}`} onClick={() => onPlace(p)}>
-            {p}
-          </div>
-        ))}
-      </div>
-      <div className={styles['contents-wrapper']}>
-        {place2.map((p) => (
-          <div className={`${styles['btn-1']} ${place === p ? styles.selected : ''}`} onClick={() => onPlace(p)}>
-            {p}
+        {places.map((p) => (
+          <div className={styles['btn-1']}>
+            <PrimaryButton value={p} handleClick={onPlace(p)} selected={placeReducer.selectedPlace === p} />
           </div>
         ))}
       </div>
@@ -38,14 +38,15 @@ export default function ModalContents({ setOpen, place, setPlace, time, setTime 
         음식수령희망시간 한 시간 전부터는 주문 취소가 불가능합니다.
       </div>
       <div className={styles['contents-wrapper']}>
-        {arrTime.map((t) => (
-          <div className={`${styles['btn-2']} ${time === t ? styles.selected : ''}`} onClick={() => onTime(t)}>
-            {t}
+        {times.map((t) => (
+          <div className={styles['btn-2']}>
+            <PrimaryButton value={t} handleClick={onTime(t)} selected={timeReducer.selectedTime === t} />
           </div>
         ))}
       </div>
-      <div className={styles['btn-complete']} onClick={() => setOpen(false)}>
-        선택 완료
+
+      <div className={styles['btn-complete']}>
+        <PrimaryButton value="선택 완료" handleClick={onComplete} selected />
       </div>
     </div>
   );

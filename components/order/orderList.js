@@ -11,18 +11,13 @@ const OrderList = () => {
   const orderFood = allFood.filter((f) => f.storeName === storeName);
 
   const calcSum = () => {
-    console.log(1);
-    const sum = orderFood.reduce((prevCost, food) => {
-      console.log(prevCost, food);
-      console.log(food);
-      let a = food.foodCost;
+    let sum = 0;
 
-      // todo : 모든 (음식값 + options값) 더한 sum 구하기
-
-      food.options.forEach((op) => (a += op.c));
-      console.log(a);
-      return a;
+    orderFood.forEach((f) => {
+      sum += f.foodCost;
+      f.options.forEach((a) => (sum += a.c));
     });
+    return sum;
   };
 
   return (
@@ -44,7 +39,7 @@ const OrderList = () => {
             <div className={styles.border} />
             <div className={styles.sum}>
               <div>합계</div>
-              <div className={styles.cost}>{calcSum()}원</div>
+              <div className={styles.cost}>{calcSum().toLocaleString()}원</div>
             </div>
           </div>
         </>

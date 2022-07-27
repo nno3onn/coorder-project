@@ -33,45 +33,25 @@
   width: 100%;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
-.btn-1,
-.btn-2,
-.btn-complete {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  font-weight: bold;
-  border-radius: 20px;
-  color: $color-white;
-  background-color: $color-grey-2;
-  cursor: pointer;
-}
-.btn-1:hover,
-.btn-2:hover,
-.btn-complete:hover,
-.selected {
-  background-color: $color-primary;
-}
 .btn-1 {
-  width: 400px;
-  padding: 20px;
-  margin: 10px;
+  width: 180px;
   height: 70px;
 }
+.btn-1,
 .btn-2 {
-  padding: 18px;
+  margin: 10px;
 }
 
 .btn-complete {
-  font-weight: bolder;
   font-size: 20px;
 
+  width: 200px;
   height: 60px;
-  padding: 10px 40px;
+
   margin-top: 50px;
   margin-bottom: 20px;
 }

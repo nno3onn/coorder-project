@@ -14,9 +14,10 @@
   width: 100px;
   height: 100px;
   background-color: $color-primary;
-}
-.container:hover {
-  cursor: pointer;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .txt {

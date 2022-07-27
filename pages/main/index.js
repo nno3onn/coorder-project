@@ -9,16 +9,11 @@ const Container = styled.div`
   min-height: 100vh;
 `;
 
-const MainPage = () => {
-  const [place, setPlace] = useState();
-  const [time, setTime] = useState();
-
-  return (
-    <Container>
-      <StoreList />
-      <Modal place={place} setPlace={setPlace} time={time} setTime={setTime} />
-    </Container>
-  );
-};
+const MainPage = () => (
+  <Container>
+    <StoreList />
+    <Modal />
+  </Container>
+);
 
 export default MainPage;

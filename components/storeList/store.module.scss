@@ -1,19 +1,34 @@
 @import '/styles/color.scss';
 
 .container {
+  position: relative;
+
   border: 1px solid $color-grey-2;
   border-radius: 40px;
-  background-color: $list-bg;
-  padding: 28px;
   margin-bottom: 36px;
   height: 150px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
+  .cover {
+    display: absolute;
+    width: 100%;
+    border: 1px solid $color-grey-2;
+    border-radius: 40px;
+    background-color: $list-bg;
+    height: 100%;
 
-  cursor: pointer;
-
+    &:hover {
+      cursor: pointer;
+      background-color: $list-bg-hover;
+      color: $color-white;
+    }
+  }
+  .wrapper {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
   .title {
     font-weight: bold;
     font-size: 20px;
@@ -22,9 +37,4 @@
   .desc {
     font-size: 14px;
   }
-}
-
-.container:hover {
-  background-color: $list-bg-hover;
-  color: $color-white;
 }
