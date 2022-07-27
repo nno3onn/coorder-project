@@ -16,6 +16,9 @@ const OrderList = () => {
       console.log(prevCost, food);
       console.log(food);
       let a = food.foodCost;
+
+      // todo : 모든 (음식값 + options값) 더한 sum 구하기
+
       food.options.forEach((op) => (a += op.c));
       console.log(a);
       return a;
