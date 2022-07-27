@@ -39,13 +39,16 @@ const FoodMenu = ({ data }) => {
                 <div className={styles['menu-wrapper']}>
                   {v.map((info) => (
                     <>
-                      <a href={`/store/${storeName}/food/${info.name}`} className={styles['food-wrapper']}>
+                      <div
+                        onClick={() => router.push(`/store/${storeName}/food/${info.name}`)}
+                        className={styles['food-wrapper']}
+                      >
                         <div className={styles.img} />
                         <div className={styles.info}>
                           <div className={styles.name}>{info.name}</div>
                           <div className={styles.cost}>{info.cost.toLocaleString()}원</div>
                         </div>
-                      </a>
+                      </div>
                       <div className={styles.border} />
                     </>
                   ))}

@@ -1,13 +1,16 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+
 import CompleteOrder from './complete';
 import styles from './index.module.scss';
+import OrderList from './orderList';
 
 const Order = () => {
   const router = useRouter();
+
   const [complete, setComplete] = useState(false);
 
-  const handleClick = () => {
+  const onCLick = () => {
     setComplete(true);
     setTimeout(() => router.push('/main'), 2000);
   };
@@ -20,7 +23,9 @@ const Order = () => {
         <div className={styles.container}>
           <div className={styles.wrapper}>
             <div className={styles.title}>주문내역</div>
-            <div className={styles['contents-wrapper']}>d</div>
+            <div className={styles['contents-wrapper']}>
+              <OrderList />
+            </div>
           </div>
           <div className={styles.wrapper}>
             <div className={styles.title}>메시지 및 요청사항</div>
@@ -77,7 +82,7 @@ const Order = () => {
               </div>
             </div>
           </div>
-          <div className={styles['btn-wrapper']} onClick={() => handleClick()}>
+          <div className={styles['btn-wrapper']} onClick={() => onCLick()}>
             <div>주문하기</div>
           </div>
         </div>

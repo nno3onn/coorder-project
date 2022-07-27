@@ -6,22 +6,22 @@ export default function ModalContents({ setOpen, place, setPlace, time, setTime 
   const { place1, place2 } = dataConfigs;
   const arrTime = dataConfigs.time;
 
-  const handlePlace = (p) => setPlace(p);
-  const handleTime = (t) => setTime(t);
+  const onPlace = (p) => setPlace(p);
+  const onTime = (t) => setTime(t);
 
   return (
     <div className={styles.container}>
       <div className={styles.title}>음식을 수령 받을 장소를 선택해주세요</div>
       <div className={styles['contents-wrapper']}>
         {place1.map((p) => (
-          <div className={`${styles['btn-1']} ${place === p ? styles.selected : ''}`} onClick={() => handlePlace(p)}>
+          <div className={`${styles['btn-1']} ${place === p ? styles.selected : ''}`} onClick={() => onPlace(p)}>
             {p}
           </div>
         ))}
       </div>
       <div className={styles['contents-wrapper']}>
         {place2.map((p) => (
-          <div className={`${styles['btn-1']} ${place === p ? styles.selected : ''}`} onClick={() => handlePlace(p)}>
+          <div className={`${styles['btn-1']} ${place === p ? styles.selected : ''}`} onClick={() => onPlace(p)}>
             {p}
           </div>
         ))}
@@ -39,7 +39,7 @@ export default function ModalContents({ setOpen, place, setPlace, time, setTime 
       </div>
       <div className={styles['contents-wrapper']}>
         {arrTime.map((t) => (
-          <div className={`${styles['btn-2']} ${time === t ? styles.selected : ''}`} onClick={() => handleTime(t)}>
+          <div className={`${styles['btn-2']} ${time === t ? styles.selected : ''}`} onClick={() => onTime(t)}>
             {t}
           </div>
         ))}

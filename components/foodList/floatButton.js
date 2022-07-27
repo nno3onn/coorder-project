@@ -1,12 +1,14 @@
+import { useRouter } from 'next/router';
 import styles from './floatButton.module.scss';
 
 const FloatButton = () => {
-  const a = 1;
+  const router = useRouter();
+  const { query } = router;
 
   return (
-    <a className={styles.container} href="/order">
+    <div className={styles.container} onClick={() => router.push(`/store/${query.storeName}/order`)}>
       <img src="/icons/shopping_basket.png" alt="basket" />
-    </a>
+    </div>
   );
 };
 
