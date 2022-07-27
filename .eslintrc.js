@@ -30,6 +30,7 @@ module.exports = {
     'react/jsx-no-useless-fragment': 0,
     'no-unused-vars': 0,
     'object-curly-newline': 0,
+    'default-param-last': 0,
   },
   // jsconfig.json 적용
   settings: {
