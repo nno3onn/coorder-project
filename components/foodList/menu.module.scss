@@ -8,7 +8,7 @@
   top: -10vh;
   background-color: $color-white;
   border-radius: 50px;
-  padding: 50px;
+  padding: 40px;
 }
 
 .btn-wrapper {
@@ -41,40 +41,4 @@
   font-size: 18px;
   margin-top: 60px;
   margin-bottom: 30px;
-}
-
-.border {
-  background-color: $color-border;
-  width: 100%;
-  height: 1px;
-  &:last-child {
-    height: 0px;
-  }
-  margin: 10px 0;
-}
-
-.food-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-left: 20px;
-  &:hover {
-    cursor: pointer;
-  }
-
-  .img {
-    width: 100px;
-    height: 100px;
-    background-color: $food-bg-small;
-    border-radius: 20px;
-    margin-right: 20px;
-  }
-  .name {
-    font-weight: bolder;
-    margin-bottom: 8px;
-  }
-  .cost {
-    color: $color-grey-1;
-    font-weight: bolder;
-  }
 }
