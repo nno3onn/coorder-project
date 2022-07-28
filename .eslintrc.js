@@ -32,7 +32,7 @@ module.exports = {
     'object-curly-newline': 0,
     'default-param-last': 0,
     'react/jsx-indent': 0,
-    'no-return-assign ': 0,
+    'no-return-assign': 0,
     'no-case-declarations': 0,
   },
   // jsconfig.json 적용
