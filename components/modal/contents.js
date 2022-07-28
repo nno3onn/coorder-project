@@ -6,6 +6,7 @@ import dataConfigs from 'configs/data';
 import { updatPlaceAction } from 'lib/store/modules/placeReducer';
 import { updateTimeAction } from 'lib/store/modules/timeReducer';
 import styles from './contents.module.scss';
+import { v4 } from 'uuid';
 
 export default function ModalContents({ setOpen }) {
   const dispatch = useDispatch();
