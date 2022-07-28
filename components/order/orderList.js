@@ -47,7 +47,7 @@ const OrderList = () => {
               <div className={styles.cost}>{calcSum().toLocaleString()}원</div>
             </div>
           </div>
-        </di>
+        </div>
       ))}
     </div>
   );
