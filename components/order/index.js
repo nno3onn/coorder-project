@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Auth from './auth';
 
 import CompleteOrder from './complete';
 import styles from './index.module.scss';
@@ -10,11 +11,21 @@ const Order = () => {
   const router = useRouter();
 
   const [complete, setComplete] = useState(false);
+  const [message, setMessage] = useState('');
+  const [auth, setAuth] = useState(false);
   const [paymethod, setPaymethod] = useState('kakao');
 
-  const onClick = () => {
-    setComplete(true);
-    setTimeout(() => router.push('/main'), 2000);
+  const onInputChange = (e) => () => {
+    const { value } = e.target;
+    setMessage(value);
+  };
+
+  const onOrder = () => {
+    if (auth) {
+      setTimeout(() => router.push('/main'), 2000);
+      return setComplete(true);
+    }
+    return alert('휴대폰 번호를 인증해주세요!');
   };
 
   const handleClick = (method) => () => setPaymethod(method);
@@ -33,23 +44,12 @@ const Order = () => {
           </div>
           <div className={styles.wrapper}>
             <div className={styles.title}>메시지 및 요청사항</div>
-            <input className={styles.msg} placeholder="요청사항을 입력해주세요." />
+            <input className={styles.msg} placeholder="요청사항을 입력해주세요." onChange={onInputChange} />
           </div>
           <div className={styles.wrapper}>
             <div className={styles.title}>문자인증</div>
             <div className={styles['contents-wrapper']}>
-              <div className={styles.subtitle}>휴대폰 번호</div>
-              <div className={styles.subcontainer}>
-                <input placeholder="휴대폰 번호를 입력해주세요." />
-                <button type="button" className={styles.grey}>
-                  인증번호
-                </button>
-              </div>
-              <div className={styles.subtitle}>인증번호</div>
-              <div className={styles.subcontainer}>
-                <input placeholder="인증번호를 입력해주세요." />
-                <button type="button">확인</button>
-              </div>
+              <Auth setAuth={setAuth} />
             </div>
           </div>
           <div className={styles.wrapper}>
@@ -58,7 +58,7 @@ const Order = () => {
               <Pay paymethod={paymethod} handleClick={handleClick} />
             </div>
           </div>
-          <div className={styles['btn-wrapper']} onClick={onClick}>
+          <div className={styles['btn-wrapper']} onClick={onOrder}>
             <div>주문하기</div>
           </div>
         </div>

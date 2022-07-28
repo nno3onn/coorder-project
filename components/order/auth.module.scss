@@ -1,0 +1,45 @@
+@import '/styles/color.scss';
+
+.subtitle {
+  font-weight: bold;
+  font-size: 17px;
+  color: $color-grey-1;
+  margin-bottom: 5px;
+}
+.subcontainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  input {
+    font-family: 나눔스퀘어;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    flex: 1;
+    background-color: $color-border;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+  }
+  .grey {
+    background-color: $color-border;
+    color: $color-grey-1;
+  }
+  button {
+    font-family: 나눔스퀘어;
+    width: 120px;
+    color: $color-white;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    background-color: $color-orange;
+    padding: 10px;
+    border-radius: 10px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
