@@ -31,6 +31,7 @@ module.exports = {
     'no-unused-vars': 0,
     'object-curly-newline': 0,
     'default-param-last': 0,
+    'react/jsx-indent': 0,
   },
   // jsconfig.json 적용
   settings: {

@@ -1,5 +1,6 @@
-import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import styles from './menu.module.scss';
 
@@ -7,35 +8,26 @@ const FoodMenu = ({ data }) => {
   const router = useRouter();
   const { storeName } = router.query;
 
-  const [type, setType] = useState();
-
-  useEffect(() => {
-    if (data) {
-      setType(Object.keys(data[0])[0]);
-    }
-  }, [data]);
+  const types = () => data.map((d) => Object.keys(d).join());
 
   return (
     <div className={styles.container}>
       <div className={styles['btn-wrapper']}>
         {data
-          ? data.map((v) =>
-              Object.keys(v).map((t) => (
-                <div
-                  className={`${styles['btn-type']} ${type === t ? styles.selected : ''}`}
-                  onClick={() => setType(t)}
-                >
-                  {t}
-                </div>
-              )),
-            )
+          ? types().map((t, index) => (
+              <Link href={`#id-${index}`}>
+                <div className={`${styles['btn-type']} ${index === 0 && styles.selected}`}>{t}</div>
+              </Link>
+            ))
           : null}
       </div>
       {data
-        ? data.map((d) =>
+        ? data.map((d, index) =>
             Object.entries(d).map(([k, v]) => (
               <>
-                <div className={styles.title}>{k}</div>
+                <div id={`id-${index}`} className={styles.title}>
+                  {k}
+                </div>
                 <div className={styles['menu-wrapper']}>
                   {v.map((info) => (
                     <>
