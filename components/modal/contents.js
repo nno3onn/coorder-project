@@ -21,7 +21,7 @@ export default function ModalContents({ setOpen }) {
       <div className={styles.title}>음식을 수령 받을 장소를 선택해주세요</div>
       <div className={styles['contents-wrapper']}>
         {places.map((p) => (
-          <div className={styles['btn-1']}>
+          <div className={styles['btn-1']} key={v4()}>
             <PrimaryButton value={p} handleClick={onPlace(p)} selected={placeReducer.selectedPlace === p} />
           </div>
         ))}
@@ -39,7 +39,7 @@ export default function ModalContents({ setOpen }) {
       </div>
       <div className={styles['contents-wrapper']}>
         {times.map((t) => (
-          <div className={styles['btn-2']}>
+          <div className={styles['btn-2']} key={v4()}>
             <PrimaryButton value={t} handleClick={onTime(t)} selected={timeReducer.selectedTime === t} />
           </div>
         ))}

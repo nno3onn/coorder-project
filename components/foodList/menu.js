@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { v4 } from 'uuid';
 
 import styles from './menu.module.scss';
 import Food from './food';
@@ -12,7 +13,7 @@ const FoodMenu = ({ data }) => {
       <div className={styles['btn-wrapper']}>
         {data
           ? types().map((t, index) => (
-              <Link href={`#id-${index}`}>
+              <Link href={`#id-${index}`} key={v4()}>
                 <div className={`${styles['btn-type']} ${index === 0 && styles.selected}`}>{t}</div>
               </Link>
             ))
@@ -21,16 +22,16 @@ const FoodMenu = ({ data }) => {
       {data
         ? data.map((d, index) =>
             Object.entries(d).map(([k, v]) => (
-              <>
+              <div key={v4()}>
                 <div id={`id-${index}`} className={styles.title}>
                   {k}
                 </div>
                 <div className={styles['menu-wrapper']}>
                   {v.map((info) => (
-                    <Food info={info} />
+                    <Food info={info} key={v4()} />
                   ))}
                 </div>
-              </>
+              </div>
             )),
           )
         : null}

@@ -27,7 +27,7 @@ const OrderList = () => {
   return (
     <div className={styles.container}>
       {orderFood.map((food) => (
-        <>
+        <div key={v4()}>
           <div className={styles.img} />
           <div className={styles['list-wrapper']}>
             <div className={styles.foodName}>{food.foodName}</div>
@@ -46,7 +46,7 @@ const OrderList = () => {
               <div className={styles.cost}>{calcSum().toLocaleString()}원</div>
             </div>
           </div>
-        </>
+        </di>
       ))}
     </div>
   );

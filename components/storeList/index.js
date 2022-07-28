@@ -1,4 +1,5 @@
 import dataConfigs from 'configs/data';
+import { v4 } from 'uuid';
 
 import Store from './store';
 
@@ -10,7 +11,7 @@ const StoreList = () => {
   return (
     <div className={styles.container}>
       {store.map((v) => (
-        <Store storeName={v} />
+        <Store storeName={v} key={v4()} />
       ))}
     </div>
   );

@@ -6,6 +6,7 @@ import RadioBox from './radiobox';
 import styles from './contents.module.scss';
 import CountBox from './countbox';
 import AddButton from './addButton';
+import { v4 } from 'uuid';
 
 const AddFoodContents = () => {
   const router = useRouter();
@@ -31,13 +32,13 @@ const AddFoodContents = () => {
       <div className={styles['foodName-wrapper']}>{foodName}</div>
 
       {options.map((option) => (
-        <div className={styles['option-wrapper']}>
+        <div className={styles['option-wrapper']} key={v4()}>
           {Object.entries(option).map(([title, v]) => (
             <>
               <div className={styles.title}>{title}</div>
               <div className={styles.border} />
               {v.map((e) => (
-                <div className={styles['info-wrapper']}>
+                <div className={styles['info-wrapper']} key={v4()}>
                   <div className={styles.text}>{e.n}</div>
                   <div className={styles['right-wrapper']}>
                     <div className={styles.text}>+ {e.c.toLocaleString()}원</div>
