@@ -5,6 +5,7 @@ const Container = styled.div`
   height: 40vh;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 `;
 
 const Cover = styled.div`

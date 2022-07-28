@@ -1,13 +1,17 @@
 @import '/styles/color.scss';
 
 .container {
-  display: fex;
+  width: 100%;
+  display: flex;
   justify-content: center;
-  align-items: center;
+  text-align: center;
   margin-bottom: 50px;
 }
 .btn {
+  width: 200px;
   color: white;
+  font-weight: bolder;
+  font-size: 18px;
   background-color: $color-primary;
   padding: 20px 60px;
   border-radius: 15px;
