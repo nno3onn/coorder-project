@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { v4 } from 'uuid';
 
 import Background from './background';
 import RadioBox from './radiobox';
@@ -6,7 +7,6 @@ import RadioBox from './radiobox';
 import styles from './contents.module.scss';
 import CountBox from './countbox';
 import AddButton from './addButton';
-import { v4 } from 'uuid';
 
 const AddFoodContents = () => {
   const router = useRouter();
