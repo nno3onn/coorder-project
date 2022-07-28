@@ -1,0 +1,37 @@
+@import '/styles/color.scss';
+
+.countbox {
+  display: flex;
+  flex-direction: row;
+  .minus,
+  .center,
+  .plus {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    color: $color-white;
+  }
+  .minus {
+    background-color: $color-orange;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .center {
+    background-color: $button-bg-center;
+    color: #333;
+  }
+  .plus {
+    background-color: $color-primary;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

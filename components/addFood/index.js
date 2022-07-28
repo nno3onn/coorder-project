@@ -1,19 +1,13 @@
-import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React from 'react';
+import Background from './background';
 
 import AddFoodContents from './contents';
-import AddButton from './addButton';
 
-const AddFood = () => {
-  const router = useRouter();
-  const { storeName, foodName } = router.query;
-
-  return (
-    <>
-      <AddFoodContents />
-      <AddButton />
-    </>
-  );
-};
+const AddFood = () => (
+  <>
+    <Background />
+    <AddFoodContents />
+  </>
+);
 
 export default AddFood;

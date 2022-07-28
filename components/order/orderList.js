@@ -13,9 +13,13 @@ const OrderList = () => {
   const calcSum = () => {
     let sum = 0;
 
+    console.log(orderFood);
     orderFood.forEach((f) => {
       sum += f.foodCost;
-      f.options.forEach((a) => (sum += a.c));
+      if (f.options) {
+        Object.values(f.options).forEach((opt) => (sum += opt.cost * opt.cnt));
+      }
+      // sum *= f.foodCnt;
     });
     return sum;
   };
@@ -29,13 +33,13 @@ const OrderList = () => {
             <div className={styles.foodName}>{food.foodName}</div>
             <div className={styles.foodCost}>{food.foodCost.toLocaleString()}원</div>
             <div className={styles.border} />
-            {food.options &&
+            {/* {food.options &&
               food.options.map((op) => (
                 <div className={styles.option}>
                   <div>{op.n}</div>
                   <div>+{op.c.toLocaleString()}원</div>
                 </div>
-              ))}
+              ))} */}
             <div className={styles.border} />
             <div className={styles.sum}>
               <div>합계</div>

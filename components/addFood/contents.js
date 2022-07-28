@@ -1,6 +1,11 @@
 import { useRouter } from 'next/router';
 
+import Background from './background';
+import RadioBox from './radiobox';
+
 import styles from './contents.module.scss';
+import CountBox from './countbox';
+import AddButton from './addButton';
 
 const AddFoodContents = () => {
   const router = useRouter();
@@ -23,41 +28,34 @@ const AddFoodContents = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.img} />
-      <div className={styles['name-wrapper']}>{foodName}</div>
+      <div className={styles['foodName-wrapper']}>{foodName}</div>
+
       {options.map((option) => (
         <div className={styles['option-wrapper']}>
-          {Object.entries(option).map(([k, v]) => (
+          {Object.entries(option).map(([title, v]) => (
             <>
-              <div className={styles.title}>{k}</div>
+              <div className={styles.title}>{title}</div>
               <div className={styles.border} />
               {v.map((e) => (
                 <div className={styles['info-wrapper']}>
-                  <div className={styles.name}>{e.n}</div>
-                  <div className={styles.cost}>+ {e.c.toLocaleString()}원</div>
-                  {e.isCount ? (
-                    <div className={styles.countbox}>
-                      <div className={styles.left}>-</div>
-                      <div className={styles.center}>1</div>
-                      <div className={styles.right}>+</div>
-                    </div>
-                  ) : (
-                    <div className={styles.radiobox} />
-                  )}
+                  <div className={styles.text}>{e.n}</div>
+                  <div className={styles['right-wrapper']}>
+                    <div className={styles.text}>+ {e.c.toLocaleString()}원</div>
+                    {e.isCount ? <CountBox name={e.n} cost={e.c} /> : <RadioBox name={e.n} cost={e.c} selected />}
+                  </div>
                 </div>
               ))}
             </>
           ))}
         </div>
       ))}
-      <div className={styles['count-wrapper']}>
-        <div className={styles.title}>수량</div>
-        <div className={styles.countbox}>
-          <div className={styles.left}>-</div>
-          <div className={styles.center}>1</div>
-          <div className={styles.right}>+</div>
+      <div className={styles['option-wrapper']}>
+        <div className={styles['info-wrapper']}>
+          <div className={styles.title}>수량</div>
+          <CountBox isOption={false} />
         </div>
       </div>
+      <AddButton />
     </div>
   );
 };
