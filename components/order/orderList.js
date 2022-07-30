@@ -14,7 +14,7 @@ const OrderList = () => {
   const calcSum = () => {
     let sum = 0;
 
-    console.log(orderFood);
+    console.log(1, orderFood);
     orderFood.forEach((f) => {
       sum += f.foodCost;
       if (f.options) {
@@ -34,6 +34,7 @@ const OrderList = () => {
             <div className={styles.foodName}>{food.foodName}</div>
             <div className={styles.foodCost}>{food.foodCost.toLocaleString()}원</div>
             <div className={styles.border} />
+
             {/* {food.options &&
               food.options.map((op) => (
                 <div className={styles.option}>

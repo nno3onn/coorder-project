@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router';
 import { v4 } from 'uuid';
 
-import Background from './background';
+import CountBox from './countbox';
+import AddButton from './addButton';
 import RadioBox from './radiobox';
 
 import styles from './contents.module.scss';
-import CountBox from './countbox';
-import AddButton from './addButton';
+import Option from './option';
 
 const AddFoodContents = () => {
   const router = useRouter();
@@ -37,13 +37,9 @@ const AddFoodContents = () => {
             <>
               <div className={styles.title}>{title}</div>
               <div className={styles.border} />
-              {v.map((e) => (
+              {v.map((info, index) => (
                 <div className={styles['info-wrapper']} key={v4()}>
-                  <div className={styles.text}>{e.n}</div>
-                  <div className={styles['right-wrapper']}>
-                    <div className={styles.text}>+ {e.c.toLocaleString()}원</div>
-                    {e.isCount ? <CountBox name={e.n} cost={e.c} /> : <RadioBox name={e.n} cost={e.c} selected />}
-                  </div>
+                  <Option info={info} index={index} />
                 </div>
               ))}
             </>

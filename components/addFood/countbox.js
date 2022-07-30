@@ -1,55 +1,42 @@
-import { updateAction } from 'lib/store/modules/foodReducer';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 import styles from './countbox.module.scss';
 
+// isOption = false => 수량
 const CountBox = ({ name, cost, isOption = true }) => {
   const [cnt, setCnt] = useState(isOption ? 0 : 1);
 
-  const router = useRouter();
-  const { storeName, foodName } = router.query;
-  const dispatch = useDispatch();
-  const foodShopping = useSelector((state) =>
-    state.foodReducer.filter((s) => s.storeName === storeName && s.foodName === foodName),
-  );
+  useEffect(() => {
+    const s = JSON.parse(sessionStorage.getItem('options'));
+    if (s && s[name]) {
+      setCnt(s[name].cnt);
+    }
+  }, []);
 
-  const onDispatch = (v) => () => {
-    setCnt((prevCnt) => {
-      if (prevCnt === 0 && v === -1) return prevCnt;
-      return prevCnt + v;
-    });
+  const onCount = (v) => () => {
+    const count = cnt + (cnt === 0 && v === -1 ? 0 : v);
+    setCnt(count);
 
+    const s = JSON.parse(sessionStorage.getItem('options'));
     if (isOption) {
-      dispatch(
-        updateAction({
-          storeName,
-          foodName,
-          foodCost: foodShopping[0].foodCost,
-          foodCnt: foodShopping[0].foodCnt,
-          options: { ...foodShopping[0].options, [name]: { cost, cnt } },
-        }),
-      );
+      const options = s ? { ...s, [name]: { cost, cnt: count } } : { [name]: { cost, cnt: count } };
+      if (count === 0) {
+        delete options[name];
+      }
+      sessionStorage.setItem('options', JSON.stringify(options));
     } else {
-      dispatch(
-        updateAction({
-          storeName,
-          foodName,
-          foodCost: 9800,
-          foodCnt: cnt,
-        }),
-      );
+      const options = { ...s, foodCnt: count };
+      sessionStorage.setItem('options', JSON.stringify(options));
     }
   };
 
   return (
     <div className={styles.countbox}>
-      <div className={styles.minus} onClick={onDispatch(-1)}>
+      <div className={styles.minus} onClick={onCount(-1)}>
         -
       </div>
       <div className={styles.center}>{cnt}</div>
-      <div className={styles.plus} onClick={onDispatch(+1)}>
+      <div className={styles.plus} onClick={onCount(+1)}>
         +
       </div>
     </div>
