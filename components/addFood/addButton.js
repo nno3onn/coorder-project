@@ -12,7 +12,6 @@ const AddButton = () => {
 
   const onDispatch = () => {
     const storeFood = allFood.filter((f) => f.storeName === storeName && f.foodName === foodName);
-    console.log(storeFood);
     const oldOptions = storeFood.length ? storeFood[0].options : {};
 
     const options = { ...JSON.parse(sessionStorage.getItem('options')) };
@@ -30,10 +29,6 @@ const AddButton = () => {
 
     sessionStorage.removeItem('options');
   };
-
-  useEffect(() => {
-    onDispatch();
-  }, []);
 
   const onClick = () => {
     router.push(`/store/${storeName}`);
