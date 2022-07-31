@@ -34,6 +34,8 @@ module.exports = {
     'react/jsx-indent': 0,
     'no-return-assign': 0,
     'no-case-declarations': 0,
+    'operator-linebreak': 0,
+    'jsx-a11y/no-noninteractive-element-interactions': 0,
   },
   // jsconfig.json 적용
   settings: {

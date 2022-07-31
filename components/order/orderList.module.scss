@@ -17,12 +17,6 @@
 .wrapper {
   display: flex;
   flex-direction: row;
-  .img {
-    background-color: grey;
-    width: 100px;
-    height: 100px;
-    border-radius: 20px;
-  }
 }
 .list-wrapper {
   flex: 1;
@@ -30,12 +24,26 @@
   flex-direction: column;
   padding-left: 20px;
   padding-top: 10px;
-
-  .foodName {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  .food-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    .foodName {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    img {
+      padding: 8px;
+      width: 30px;
+      height: 30px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
+
   .foodCost {
     font-weight: bolder;
     color: $color-grey-1;

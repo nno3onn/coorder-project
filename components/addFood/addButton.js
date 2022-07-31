@@ -1,6 +1,5 @@
 import { updateAction } from 'lib/store/modules/foodReducer';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './addButton.module.scss';
 

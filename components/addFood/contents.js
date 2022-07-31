@@ -3,10 +3,9 @@ import { v4 } from 'uuid';
 
 import CountBox from './countbox';
 import AddButton from './addButton';
-import RadioBox from './radiobox';
+import Option from './option';
 
 import styles from './contents.module.scss';
-import Option from './option';
 
 const AddFoodContents = () => {
   const router = useRouter();
