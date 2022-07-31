@@ -1,29 +1,25 @@
 import { updateAction } from 'lib/store/modules/foodReducer';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styles from './addButton.module.scss';
 
 const AddButton = () => {
   const router = useRouter();
   const { storeName, foodName } = router.query;
   const dispatch = useDispatch();
-  const allFood = useSelector((state) => state.foodReducer);
 
   const onDispatch = () => {
-    const storeFood = allFood.filter((f) => f.storeName === storeName && f.foodName === foodName);
-    const oldOptions = storeFood.length ? storeFood[0].options : {};
-
     const options = { ...JSON.parse(sessionStorage.getItem('options')) };
-    const foodCnt = JSON.parse(sessionStorage.getItem('count'));
+    const foodCnt = sessionStorage.getItem('count');
 
     dispatch(
       updateAction({
         storeName,
         foodName,
         foodCost: 9800,
-        foodCnt: foodCnt || 1,
-        options: { ...oldOptions, ...options } || {},
+        foodCnt,
+        options,
       }),
     );
 

@@ -5,28 +5,32 @@ import styles from './countbox.module.scss';
 // isOption = false => 수량
 const CountBox = ({ name, cost, isOption = true }) => {
   const [cnt, setCnt] = useState(isOption ? 0 : 1);
+  const [options, setOptions] = useState({});
 
   useEffect(() => {
-    const s = JSON.parse(sessionStorage.getItem('options'));
-    if (s && s[name]) {
-      setCnt(s[name].cnt);
+    const s = sessionStorage.getItem('options');
+    if (s) {
+      setOptions(JSON.parse(s));
+      if (s[name]) {
+        setCnt(s[name].cnt);
+      }
     }
   }, []);
 
   const onCount = (v) => () => {
-    const count = cnt + (cnt === 0 && v === -1 ? 0 : v);
-    setCnt(count);
+    if (!(cnt === (isOption ? 0 : 1) && v === -1)) {
+      const count = cnt + v;
 
-    const s = JSON.parse(sessionStorage.getItem('options'));
-    if (isOption) {
-      const options = s ? { ...s, [name]: { cost, cnt: count } } : { [name]: { cost, cnt: count } };
-      if (count === 0) {
-        delete options[name];
+      if (isOption) {
+        const newOptions = options ? { ...options, [name]: { cost, cnt: count } } : { [name]: { cost, cnt: count } };
+        if (count === 0) {
+          delete newOptions[name];
+        }
+        sessionStorage.setItem('options', JSON.stringify(newOptions));
+      } else {
+        sessionStorage.setItem('count', count);
       }
-      sessionStorage.setItem('options', JSON.stringify(options));
-    } else {
-      const options = { ...s, foodCnt: count };
-      sessionStorage.setItem('options', JSON.stringify(options));
+      setCnt(count);
     }
   };
 
