@@ -5,14 +5,20 @@ import styles from './countbox.module.scss';
 // isOption = false => 수량
 const CountBox = ({ name, cost, isCount = false }) => {
   const [cnt, setCnt] = useState(isCount ? 1 : 0);
-  const [options, setOptions] = useState({});
+
+  useEffect(() => {
+    const opt = sessionStorage.getItem('options');
+    console.log('useEffect', JSON.parse(opt));
+  }, []);
 
   const onCount = (v) => () => {
+    const opt = sessionStorage.getItem('options');
+    const options = JSON.parse(opt);
+
     if (!(cnt === (isCount ? 1 : 0) && v === -1)) {
       const count = cnt + v;
-
       if (!isCount) {
-        const newOptions = options ? { ...options, [name]: { cost, cnt: count } } : { [name]: { cost, cnt: count } };
+        const newOptions = { ...options, [name]: { cost, cnt: count } };
         if (count === 0) {
           delete newOptions[name];
         }
