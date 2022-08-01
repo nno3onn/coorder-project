@@ -6,11 +6,6 @@ import styles from './countbox.module.scss';
 const CountBox = ({ name, cost, isCount = false }) => {
   const [cnt, setCnt] = useState(isCount ? 1 : 0);
 
-  useEffect(() => {
-    const opt = sessionStorage.getItem('options');
-    console.log('useEffect', JSON.parse(opt));
-  }, []);
-
   const onCount = (v) => () => {
     const opt = sessionStorage.getItem('options');
     const options = JSON.parse(opt);
