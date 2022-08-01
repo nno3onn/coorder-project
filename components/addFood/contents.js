@@ -32,7 +32,8 @@ const AddFoodContents = () => {
 
       {options.map((option) => (
         <div className={styles['option-wrapper']} key={v4()}>
-          {Object.entries(option).map(([title, v]) => (
+          <Option option={option} />
+          {/* {Object.entries(option).map(([title, v]) => (
             <div key={v4()}>
               <div className={styles.title}>{title}</div>
               <div className={styles.border} />
@@ -42,7 +43,7 @@ const AddFoodContents = () => {
                 </div>
               ))}
             </div>
-          ))}
+          ))} */}
         </div>
       ))}
       <div className={styles['option-wrapper']}>
