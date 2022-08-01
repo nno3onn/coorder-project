@@ -6,9 +6,15 @@ import styles from './countbox.module.scss';
 const CountBox = ({ name, cost, isCount = false }) => {
   const [cnt, setCnt] = useState(isCount ? 1 : 0);
 
-  const onCount = (v) => () => {
+  const getOptions = () => {
     const opt = sessionStorage.getItem('options');
-    const options = JSON.parse(opt);
+    console.log(3, opt);
+    return opt ? JSON.parse(opt) : {};
+  };
+
+  const onCount = (v) => () => {
+    const options = getOptions();
+    console.log('countbox', options);
 
     if (!(cnt === (isCount ? 1 : 0) && v === -1)) {
       const count = cnt + v;
@@ -18,8 +24,9 @@ const CountBox = ({ name, cost, isCount = false }) => {
           delete newOptions[name];
         }
         sessionStorage.setItem('options', JSON.stringify(newOptions));
+        console.log(newOptions);
       } else {
-        sessionStorage.setItem('count', count);
+        // sessionStorage.setItem('count', count);
       }
       setCnt(count);
     }

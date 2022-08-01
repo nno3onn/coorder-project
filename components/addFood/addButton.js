@@ -1,15 +1,17 @@
 import { updateAction } from 'lib/store/modules/foodReducer';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
+
 import styles from './addButton.module.scss';
 
 const AddButton = () => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const { storeName, foodName } = router.query;
-  const dispatch = useDispatch();
 
   const onDispatch = () => {
-    const options = { ...JSON.parse(sessionStorage.getItem('options')) };
+    const options = JSON.parse(sessionStorage.getItem('options'));
+    console.log(options);
     const foodCnt = sessionStorage.getItem('count') || 1;
 
     dispatch(

@@ -8,18 +8,27 @@ const Click = styled.div`
 `;
 
 const RadioBox = ({ name, cost, isSelected, setter, index }) => {
-  const getOptions = () => {
-    const opt = sessionStorage.getItem('options');
-    return opt ? JSON.parse(opt) : {};
+  const setInitial = () => {
+    console.log(2);
+    const opt = { [name]: { cost, cnt: 0 } };
+    const initial = JSON.stringify(opt);
+    sessionStorage.setItem('options', initial);
+    console.log(initial);
+    return initial;
   };
 
   useEffect(() => {
+    console.log(1, index);
     if (index === 0) {
       setter(name);
-      const opt = { [name]: { cost, cnt: 0 } };
-      sessionStorage.setItem('options', JSON.stringify(opt));
+      setInitial();
     }
   }, []);
+
+  const getOptions = () => {
+    const opt = sessionStorage.getItem('options');
+    return opt ? JSON.parse(opt) : setInitial();
+  };
 
   const onSelect = () => {
     setter(name);
