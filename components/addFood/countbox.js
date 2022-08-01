@@ -3,25 +3,15 @@ import { useEffect, useState } from 'react';
 import styles from './countbox.module.scss';
 
 // isOption = false => 수량
-const CountBox = ({ name, cost, isOption = true }) => {
-  const [cnt, setCnt] = useState(isOption ? 0 : 1);
+const CountBox = ({ name, cost, isCount = false }) => {
+  const [cnt, setCnt] = useState(isCount ? 1 : 0);
   const [options, setOptions] = useState({});
 
-  useEffect(() => {
-    const s = sessionStorage.getItem('options');
-    if (s) {
-      setOptions(JSON.parse(s));
-      if (s[name]) {
-        setCnt(s[name].cnt);
-      }
-    }
-  }, []);
-
   const onCount = (v) => () => {
-    if (!(cnt === (isOption ? 0 : 1) && v === -1)) {
+    if (!(cnt === (isCount ? 1 : 0) && v === -1)) {
       const count = cnt + v;
 
-      if (isOption) {
+      if (!isCount) {
         const newOptions = options ? { ...options, [name]: { cost, cnt: count } } : { [name]: { cost, cnt: count } };
         if (count === 0) {
           delete newOptions[name];

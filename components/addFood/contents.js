@@ -33,7 +33,7 @@ const AddFoodContents = () => {
       {options.map((option) => (
         <div className={styles['option-wrapper']} key={v4()}>
           {Object.entries(option).map(([title, v]) => (
-            <>
+            <div key={v4()}>
               <div className={styles.title}>{title}</div>
               <div className={styles.border} />
               {v.map((info, index) => (
@@ -41,14 +41,14 @@ const AddFoodContents = () => {
                   <Option info={info} index={index} />
                 </div>
               ))}
-            </>
+            </div>
           ))}
         </div>
       ))}
       <div className={styles['option-wrapper']}>
         <div className={styles['info-wrapper']}>
           <div className={styles.title}>수량</div>
-          <CountBox isOption={false} />
+          <CountBox isCount />
         </div>
       </div>
       <AddButton />

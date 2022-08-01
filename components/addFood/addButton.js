@@ -10,7 +10,7 @@ const AddButton = () => {
 
   const onDispatch = () => {
     const options = { ...JSON.parse(sessionStorage.getItem('options')) };
-    const foodCnt = sessionStorage.getItem('count');
+    const foodCnt = sessionStorage.getItem('count') || 1;
 
     dispatch(
       updateAction({

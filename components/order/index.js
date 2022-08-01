@@ -1,5 +1,7 @@
+import { clearAction } from 'lib/store/modules/foodReducer';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Auth from './auth';
 
 import CompleteOrder from './complete';
@@ -9,6 +11,7 @@ import Pay from './pay';
 
 const Order = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const [complete, setComplete] = useState(false);
   const [message, setMessage] = useState('');
@@ -22,6 +25,7 @@ const Order = () => {
 
   const onOrder = () => {
     if (auth) {
+      dispatch(clearAction());
       setTimeout(() => router.push('/main'), 2000);
       return setComplete(true);
     }
