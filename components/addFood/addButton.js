@@ -1,4 +1,4 @@
-import getSessionitem from 'lib/sessionStorage/getSessionItem';
+import getSessionitem from 'lib/sessionStorage/getSessionitem';
 import { updateAction } from 'lib/store/modules/foodReducer';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
@@ -12,7 +12,6 @@ const AddButton = () => {
 
   const onDispatch = () => {
     const options = getSessionitem('options');
-    console.log(options);
     const foodCnt = sessionStorage.getItem('count') || 1;
 
     dispatch(

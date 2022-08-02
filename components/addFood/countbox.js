@@ -1,5 +1,5 @@
-import getSessionitem from 'lib/sessionStorage/getSessionItem';
-import setSessionItem from 'lib/sessionStorage/setSessionItem';
+import getSessionitem from 'lib/sessionStorage/getSessionitem';
+import setSessionItem from 'lib/sessionStorage/setSessionitem';
 import { useEffect, useState } from 'react';
 
 import styles from './countbox.module.scss';
@@ -17,20 +17,20 @@ const CountBox = ({ name, cost, isCount = false }) => {
     const options = getSessionitem('options');
     console.log('cnt2', options);
 
-    // if (!(cnt === (isCount ? 1 : 0) && v === -1)) {
-    //   const count = cnt + v;
-    //   if (!isCount) {
-    //     const newOptions = { ...options, [name]: { cost, cnt: count } };
-    //     if (count === 0) {
-    //       delete newOptions[name];
-    //     }
-    //     setSessionItem('options', newOptions);
-    //     console.log(newOptions);
-    //   } else {
-    //     sessionStorage.setItem('count', count);
-    //   }
-    //   setCnt(count);
-    // }
+    if (!(cnt === (isCount ? 1 : 0) && v === -1)) {
+      const count = cnt + v;
+      if (!isCount) {
+        const newOptions = { ...options, [name]: { cost, cnt: count } };
+        if (count === 0) {
+          delete newOptions[name];
+        }
+        setSessionItem('options', newOptions);
+        console.log(newOptions);
+      } else {
+        sessionStorage.setItem('count', count);
+      }
+      setCnt(count);
+    }
   };
 
   return (
