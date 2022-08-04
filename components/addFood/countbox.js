@@ -10,6 +10,7 @@ const CountBox = ({ name, cost, isCount = false }) => {
 
   useEffect(() => {
     const options = getSessionitem('options');
+
     console.log('cnt', options);
   }, []);
 
@@ -25,7 +26,7 @@ const CountBox = ({ name, cost, isCount = false }) => {
           delete newOptions[name];
         }
         setSessionItem('options', newOptions);
-        console.log(newOptions);
+        console.log('new', newOptions);
       } else {
         sessionStorage.setItem('count', count);
       }
