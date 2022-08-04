@@ -1,6 +1,6 @@
+import { updateAction, clearAction } from 'lib/store/modules/optionReducer';
 import { useEffect } from 'react';
-import getSessionitem from 'lib/sessionStorage/getSessionitem';
-import setSessionItem from 'lib/sessionStorage/setSessionitem';
+import { useSelector, useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
 
@@ -9,31 +9,29 @@ const Click = styled.div`
   padding: 0 10px;
 `;
 
-const RadioBox = ({ name, cost, index, isSelected, setter }) => {
-  const setInitial = () => {
-    const opt = { [name]: { cost, cnt: 0 } };
-    setSessionItem('options', opt);
-  };
+const RadioBox = ({ name, cost, index, isSelected, setSelectedIndex }) => {
+  const dispatch = useDispatch();
+  const options = useSelector((state) => state.optionReducer);
 
   useEffect(() => {
-    if (isSelected) {
-      setInitial();
+    if (index === 0) {
+      dispatch(updateAction({ name, cost, cnt: 0 }));
     }
   }, []);
 
   const onSelect = () => {
-    setter(index);
+    setSelectedIndex(index);
 
-    const opt = getSessionitem('options');
-    console.log(opt);
-    // const find = Object.entries(opt).filter(([_k, v]) => v.cnt === 0);
+    const opt = { ...options };
+    const find = Object.entries(opt).filter(([_k, v]) => v.cnt === 0);
 
-    // if (find.length) {
-    //   const deleteItem = find[0][0];
-    //   delete opt[deleteItem];
-    // }
-    // opt[name] = { cost, cnt: 0 };
-    // setSessionItem('options', opt);
+    if (find.length) {
+      const deleteItem = find[0][0];
+      delete opt[deleteItem];
+    }
+    opt[name] = { cost, cnt: 0 };
+    console.log('radio', { name, cost, cnt: 0 });
+    dispatch(updateAction({ name, cost, cnt: 0 }));
   };
 
   return (

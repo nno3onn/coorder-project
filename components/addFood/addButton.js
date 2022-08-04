@@ -1,17 +1,18 @@
-import getSessionitem from 'lib/sessionStorage/getSessionitem';
 import { updateAction } from 'lib/store/modules/foodReducer';
+import { clearAction } from 'lib/store/modules/optionReducer';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import styles from './addButton.module.scss';
 
 const AddButton = () => {
+  const options = useSelector((state) => state.optionReducer);
+  console.log('options', options);
   const dispatch = useDispatch();
   const router = useRouter();
   const { storeName, foodName } = router.query;
 
   const onDispatch = () => {
-    const options = getSessionitem('options');
     const foodCnt = sessionStorage.getItem('count') || 1;
 
     dispatch(
@@ -24,7 +25,7 @@ const AddButton = () => {
       }),
     );
 
-    sessionStorage.clear();
+    dispatch(clearAction());
   };
 
   const onClick = () => {

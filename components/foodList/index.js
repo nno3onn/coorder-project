@@ -1,5 +1,8 @@
-import React from 'react';
+import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
+
+import { clearAction } from 'lib/store/modules/optionReducer';
 
 import dataConfigs from 'configs/data';
 
@@ -12,6 +15,11 @@ import styles from './index.module.scss';
 const FoodList = () => {
   const router = useRouter();
   const { storeName } = router.query;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(clearAction());
+  }, []);
 
   const data = dataConfigs.menu[storeName];
 

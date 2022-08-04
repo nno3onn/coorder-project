@@ -41,7 +41,7 @@ const Boxs = ({ v }) => {
                 cost={info.c}
                 index={index}
                 isSelected={index === selectedIndex}
-                setter={setSelectedIndex}
+                setSelectedIndex={setSelectedIndex}
               />
             )}
           </RightWrapper>
