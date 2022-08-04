@@ -8,7 +8,7 @@ import { updatPlaceAction } from 'lib/store/modules/placeReducer';
 import { updateTimeAction } from 'lib/store/modules/timeReducer';
 import styles from './contents.module.scss';
 
-export default function ModalContents({ setOpen }) {
+const ModalContents = ({ setOpen }) => {
   const dispatch = useDispatch();
   const { places, times } = dataConfigs;
   const { placeReducer, timeReducer } = useSelector((state) => state);
@@ -51,4 +51,6 @@ export default function ModalContents({ setOpen }) {
       </div>
     </div>
   );
-}
+};
+
+export default ModalContents;

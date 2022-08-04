@@ -1,4 +1,4 @@
-import { updateAction, clearAction } from 'lib/store/modules/optionReducer';
+import { updateAction } from 'lib/store/modules/optionReducer';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 

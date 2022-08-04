@@ -6,7 +6,7 @@ import ModalContents from './contents';
 
 import 'react-spring-bottom-sheet/dist/style.css';
 
-export default function Modal() {
+const Modal = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -17,4 +17,6 @@ export default function Modal() {
       </BottomSheet>
     </div>
   );
-}
+};
+
+export default Modal;

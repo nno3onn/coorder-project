@@ -1,7 +1,8 @@
-import { updateAction } from 'lib/store/modules/foodReducer';
-import { clearAction } from 'lib/store/modules/optionReducer';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
+
+import { updateAction } from 'lib/store/modules/foodReducer';
 
 import styles from './addButton.module.scss';
 
@@ -23,21 +24,16 @@ const AddButton = () => {
         options,
       }),
     );
-
-    dispatch(clearAction());
-  };
-
-  const onClick = () => {
-    router.push(`/store/${storeName}`);
-    onDispatch();
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.btn} onClick={onClick}>
-        추가하기
+    <Link href={`/store/${storeName}`}>
+      <div className={styles.container}>
+        <div className={styles.btn} onClick={onDispatch}>
+          추가하기
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

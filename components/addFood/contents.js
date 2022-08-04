@@ -10,7 +10,7 @@ import styles from './contents.module.scss';
 
 const AddFoodContents = () => {
   const router = useRouter();
-  const { storeName, foodName } = router.query;
+  const { foodName } = router.query;
 
   const options = [
     {

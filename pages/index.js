@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 import Loading from 'components/loading';
 
-export default function Home() {
+const Home = () => {
   const router = useRouter();
 
   useEffect(() => {
@@ -13,4 +13,6 @@ export default function Home() {
   }, []);
 
   return <Loading />;
-}
+};
+
+export default Home;
