@@ -20,7 +20,6 @@ const CountBox = ({ name, cost, isCount = false }) => {
         if (count === 0) {
           delete newOptions[name];
         }
-        console.log('count', { name, cost, cnt: count });
         dispatch(updateAction({ name, cost, cnt: count }));
       } else {
         sessionStorage.setItem('count', count);

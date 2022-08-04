@@ -7,7 +7,6 @@ import styles from './addButton.module.scss';
 
 const AddButton = () => {
   const options = useSelector((state) => state.optionReducer);
-  console.log('options', options);
   const dispatch = useDispatch();
   const router = useRouter();
   const { storeName, foodName } = router.query;

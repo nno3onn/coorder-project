@@ -30,7 +30,6 @@ const RadioBox = ({ name, cost, index, isSelected, setSelectedIndex }) => {
       delete opt[deleteItem];
     }
     opt[name] = { cost, cnt: 0 };
-    console.log('radio', { name, cost, cnt: 0 });
     dispatch(updateAction({ name, cost, cnt: 0 }));
   };
 
