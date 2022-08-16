@@ -7,7 +7,7 @@ import FoodImage from './foodImage';
 
 import styles from './orderList.module.scss';
 
-const OrderList = () => {
+const OrderList = ({ setTotalCost }) => {
   const router = useRouter();
   const { STOR_CD } = router.query;
   const dispatch = useDispatch();
@@ -25,6 +25,7 @@ const OrderList = () => {
       }
       sum *= f.foodCnt;
     });
+    setTotalCost(sum);
     return sum;
   };
 

@@ -1,15 +1,16 @@
 import { useRef, useState } from 'react';
 
 import phoneFormat from 'lib/format/phone';
+import sendSms from 'lib/getApi/sendSms';
+import verifySms from 'lib/getApi/verifySms';
 
 import styles from './auth.module.scss';
 
-const Auth = ({ setAuth }) => {
+const Auth = ({ setAuth, phoneRef }) => {
   const [isSend, setIsSend] = useState(false);
-  const phoneRef = useRef();
   const verifyRef = useRef();
 
-  const onGetAuth = () => {
+  const onGetAuth = async () => {
     const phone = phoneRef.current.value;
     if (!phone) {
       return alert('휴대폰 번호를 입력해주세요.');
@@ -17,12 +18,26 @@ const Auth = ({ setAuth }) => {
     if (!phoneFormat(phone)) {
       return alert('올바른 휴대폰 번호를 입력해주세요.');
     }
-    setIsSend(true);
+    const res = await sendSms(phone);
+    if (res) {
+      return setIsSend(true);
+    }
+    return setIsSend(false);
   };
 
-  const onCheck = () => {
-    alert('인증이 확인되었습니다.');
-    setAuth(true);
+  const onCheck = async () => {
+    const phone = phoneRef.current.value;
+    const verify = verifyRef.current.value;
+
+    if (isSend) {
+      const res = await verifySms(phone, verify);
+      if (res) {
+        setAuth(true);
+        return alert('인증이 확인되었습니다.');
+      }
+      return alert('다시 시도해주세요.');
+    }
+    return alert('인증번호를 받으세요.');
   };
 
   return (
