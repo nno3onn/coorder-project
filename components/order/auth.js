@@ -1,8 +1,23 @@
+import { useRef, useState } from 'react';
+
+import phoneFormat from 'lib/format/phone';
+
 import styles from './auth.module.scss';
 
 const Auth = ({ setAuth }) => {
+  const [isSend, setIsSend] = useState(false);
+  const phoneRef = useRef();
+  const verifyRef = useRef();
+
   const onGetAuth = () => {
-    'hi';
+    const phone = phoneRef.current.value;
+    if (!phone) {
+      return alert('휴대폰 번호를 입력해주세요.');
+    }
+    if (!phoneFormat(phone)) {
+      return alert('올바른 휴대폰 번호를 입력해주세요.');
+    }
+    setIsSend(true);
   };
 
   const onCheck = () => {
@@ -14,15 +29,15 @@ const Auth = ({ setAuth }) => {
     <>
       <div className={styles.subtitle}>휴대폰 번호</div>
       <div className={styles.subcontainer}>
-        <input placeholder="휴대폰 번호를 입력해주세요." />
+        <input ref={phoneRef} placeholder="휴대폰 번호를 입력해주세요." />
         <button type="button" className={styles.grey} onClick={onGetAuth}>
           인증번호
         </button>
       </div>
       <div className={styles.subtitle}>인증번호</div>
       <div className={styles.subcontainer}>
-        <input placeholder="인증번호를 입력해주세요." />
-        <button type="button" onClick={onCheck}>
+        <input ref={verifyRef} placeholder="인증번호를 입력해주세요." />
+        <button type="button" className={isSend ? '' : styles.grey} onClick={onCheck}>
           확인
         </button>
       </div>

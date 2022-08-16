@@ -13,9 +13,7 @@ const Cover = styled.div`
   background-color: rgba(0, 0, 0, 0.21);
 `;
 
-const FoodImage = ({
-  img = 'https://food.fnr.sndimg.com/content/dam/images/food/products/2022/3/11/rx_goldbelly-clinton-street-diner-zeus-burger.jpg.rend.hgtvcom.406.305.suffix/1647019464547.jpeg',
-}) => (
+const FoodImage = ({ img = null }) => (
   <Container
     style={{
       background: `url(${img})`,

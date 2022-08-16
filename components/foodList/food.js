@@ -5,17 +5,17 @@ import styles from './food.module.scss';
 
 const Food = ({ info }) => {
   const router = useRouter();
-  const { storeName } = router.query;
+  const { STOR_CD } = router.query;
+  const { PRICE, STOR_NM, MENU_NM, MENU_DETL } = info;
 
   return (
     <>
-      <Link href={`/store/${storeName}/food/${info.name}`}>
+      <Link href={`/store/${STOR_CD}/food/${MENU_NM}`}>
         <div className={styles['food-wrapper']}>
           <div
             className={styles['img-wrapper']}
             style={{
-              background:
-                'url(https://food.fnr.sndimg.com/content/dam/images/food/products/2022/3/11/rx_goldbelly-clinton-street-diner-zeus-burger.jpg.rend.hgtvcom.406.305.suffix/1647019464547.jpeg)',
+              background: `url(/images/food/${STOR_NM}/${MENU_NM})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
@@ -23,8 +23,9 @@ const Food = ({ info }) => {
             <div className={styles.img} />
           </div>
           <div className={styles.info}>
-            <div className={styles.name}>{info.name}</div>
-            <div className={styles.cost}>{info.cost.toLocaleString()}원</div>
+            <div className={styles.name}>{MENU_NM}</div>
+            <div className={styles.detail}>{MENU_DETL}</div>
+            <div className={styles.cost}>{PRICE.toLocaleString()}원</div>
           </div>
         </div>
       </Link>

@@ -4,10 +4,10 @@ import styles from './floatButton.module.scss';
 
 const FloatButton = () => {
   const router = useRouter();
-  const { storeName } = router.query;
+  const { STOR_CD } = router.query;
 
   return (
-    <Link href={`/store/${storeName}/order`}>
+    <Link href={`/store/${STOR_CD}/order`}>
       <div className={styles.container}>
         <img src="/icons/shopping_basket.png" alt="basket" />
       </div>

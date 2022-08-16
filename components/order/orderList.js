@@ -9,11 +9,11 @@ import styles from './orderList.module.scss';
 
 const OrderList = () => {
   const router = useRouter();
-  const { storeName } = router.query;
+  const { STOR_CD } = router.query;
   const dispatch = useDispatch();
 
   const allFood = useSelector((state) => state.foodReducer);
-  const orderFood = allFood.filter((f) => f.storeName === storeName);
+  const orderFood = allFood.filter((f) => f.storeCode === STOR_CD);
 
   const calcSum = () => {
     let sum = 0;
@@ -39,7 +39,7 @@ const OrderList = () => {
           {orderFood.map((food, index) => (
             <div key={v4()}>
               <div className={styles.wrapper}>
-                <FoodImage />
+                <FoodImage img={`/public/images/food/${STOR_CD}/${food.foodName}.jpg`} />
                 <div className={styles['list-wrapper']}>
                   <div className={styles['food-header']}>
                     <div className={styles.foodName}>{food.foodName}</div>

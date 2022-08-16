@@ -20,14 +20,18 @@ const FoodList = () => {
 
   const getStoreData = async () => {
     const res = await getMenu(STOR_CD);
-    console.log(111, res);
     setData(res);
   };
 
   useEffect(() => {
     dispatch(clearAction());
-    getStoreData();
   }, []);
+
+  useEffect(() => {
+    if (STOR_CD) {
+      getStoreData();
+    }
+  }, [STOR_CD]);
 
   return (
     <div className={styles.container}>
