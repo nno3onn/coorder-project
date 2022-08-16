@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const Container = styled.div`
   width: 100%;
   height: 40vh;
+  background: url(${(props) => props.img});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -17,7 +18,7 @@ const Cover = styled.div`
 const Background = ({
   img = 'https://food.fnr.sndimg.com/content/dam/images/food/products/2022/3/11/rx_goldbelly-clinton-street-diner-zeus-burger.jpg.rend.hgtvcom.406.305.suffix/1647019464547.jpeg',
 }) => (
-  <Container style={{ background: `url(${img})` }}>
+  <Container img={'/images/맘스터치/치즈뿌치싸이순살.jpg'}>
     <Cover />
   </Container>
 );

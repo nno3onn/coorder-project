@@ -3,26 +3,21 @@ import React from 'react';
 
 import styles from './store.module.scss';
 
-const Store = ({
-  storeName,
-  phone = '010-0000-0000',
-  place = 'place',
-  img = 'url(https://byline.network/wp-content/uploads/2018/05/cat.png',
-}) => (
-  <Link href={`/store/${storeName}`}>
+const Store = ({ data }) => (
+  <Link href={`/store/${data.STOR_CD || ''}`}>
     <div
       className={styles.container}
       style={{
-        background: img,
+        background: `url(/images/represent/${data.STOR_CD}.jpg)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
       <div className={styles.cover}>
         <div className={styles.wrapper}>
-          <div className={styles.title}>{storeName}</div>
-          <div className={styles.desc}>{phone}</div>
-          <div className={styles.desc}>{place}</div>
+          <div className={styles.title}>{data.STOR_NM || ''}</div>
+          <div className={styles.desc}>{data.TEL || ''}</div>
+          <div className={styles.desc}>{data.ADDR || ''}</div>
         </div>
       </div>
     </div>

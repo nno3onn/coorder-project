@@ -27,6 +27,6 @@ const menu = {
   ],
 };
 
-const dataConfigs = { places, times, store, menu };
+const dataConfigs = { places, times };
 
 export default dataConfigs;

@@ -6,6 +6,7 @@ import styles from './menu.module.scss';
 import Food from './food';
 
 const FoodMenu = ({ data }) => {
+  console.log('foodmenu', data);
   const types = () => data.map((d) => Object.keys(d).join());
 
   return (
