@@ -12,7 +12,7 @@ const AddButton = () => {
   const router = useRouter();
   const { STOR_CD, foodName } = router.query;
 
-  const onDispatch = () => {
+  const onClick = () => {
     const foodCnt = sessionStorage.getItem('count') || 1;
 
     dispatch(
@@ -29,7 +29,7 @@ const AddButton = () => {
   return (
     <Link href={`/store/${STOR_CD}`}>
       <div className={styles.container}>
-        <div className={styles.btn} onClick={onDispatch}>
+        <div className={styles.btn} onClick={onClick}>
           추가하기
         </div>
       </div>
