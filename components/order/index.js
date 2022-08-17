@@ -32,38 +32,36 @@ const Order = () => {
   };
 
   const onOrder = async () => {
-    // if (auth) {
-    console.log('data', data);
-    const orderData = data.reduce((a, b) => {
-      //*! 문제 메시지 보내는 음식 내용 작성 중!!!
-      const opt = Object.entries(b.options).reduce((i, [k, v]) => `${i} ${k} ${v.cnt}개, `);
-      // const opt = b.options.reduce((i, j) => {
-      //   const [nm] = Object.keys(j);
-      //   return `${i} ${nm} ${j.cnt}개, `;
-      // });
-      // const d = `${foodName}`;
-      // a += d;
-      console.log('opt', opt);
-    });
+    if (auth) {
+      let msg = '';
 
-    // const res = await order({
-    //   storCd: STOR_CD,
-    //   reqCtnt: message,
-    //   tel: phoneRef.current.value,
-    //   dlvryTime: time,
-    //   dlvryPlace: place,
-    //   pymntPrice: totalCost,
-    //   // pymntCtnt,
-    // });
+      data.forEach((ord) => {
+        let opt = '';
+        Object.entries(ord.options).forEach(([k, v], i) => {
+          opt += `${k}${v.cnt === 0 ? '' : `(${v.cnt}개)`},`;
+        });
 
-    // if (res) {
-    //   dispatch(clearAction());
-    //   setTimeout(() => router.push('/main'), 2000);
-    //   return setComplete(true);
-    // }
-    // return alert('다시 시도해주세요.');
-    // }
-    // return alert('휴대폰 번호를 인증해주세요!');
+        msg += `${ord.foodName} ${ord.foodCnt}개 (${opt}) | `;
+      });
+
+      const res = await order({
+        storCd: STOR_CD,
+        reqCtnt: message,
+        tel: phoneRef.current.value.substring(3),
+        dlvryTime: time,
+        dlvryPlace: place,
+        pymntPrice: totalCost,
+        pymntCtnt: msg,
+      });
+
+      if (res) {
+        dispatch(clearAction());
+        setTimeout(() => router.push('/main'), 2000);
+        return setComplete(true);
+      }
+      return alert('다시 시도해주세요.');
+    }
+    return alert('휴대폰 번호를 인증해주세요!');
   };
 
   const handleClick = (method) => () => setPaymethod(method);

@@ -7,7 +7,7 @@ export default async (req, res) => {
     const headers = {
       'Access-Control-Allow-Origin': '*',
     };
-    const data = await axios.get(url, { headers });
+    const data = await axios.post(url, { headers });
     res.status(200).json({
       success: true,
       data: data.data,
