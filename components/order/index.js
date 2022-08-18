@@ -33,7 +33,6 @@ const Order = () => {
   };
 
   const onOrder = async () => {
-    //*! test!! 아래에 원래 auth임
     if (auth) {
       let msg = '';
 
