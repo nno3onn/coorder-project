@@ -23,22 +23,23 @@ const Text = styled.div`
   font-size: 16px;
 `;
 
-const Boxs = ({ v }) => {
+const Boxs = ({ option, optionIndex }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
     <>
-      {v.map((info, index) => (
+      {option.map((info, index) => (
         <InfoWrapper key={v4()}>
-          <Text>{info.n}</Text>
+          <Text>{info.S_MENU_NM}</Text>
           <RightWrapper>
-            <Text>+ {info.c.toLocaleString()}원</Text>
-            {info.isCount ? (
-              <CountBox name={info.n} cost={info.c} />
+            <Text>+ {info.PRICE.toLocaleString()}원</Text>
+            {info.IS_COUNT === 'Y' ? (
+              <CountBox name={info.S_MENU_NM} cost={info.PRICE} optionIndex={optionIndex} />
             ) : (
               <RadioBox
-                name={info.n}
-                cost={info.c}
+                name={info.S_MENU_NM}
+                cost={info.PRICE}
+                optionIndex={optionIndex}
                 index={index}
                 isSelected={index === selectedIndex}
                 setSelectedIndex={setSelectedIndex}

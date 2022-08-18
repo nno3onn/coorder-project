@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default async (req, res) => {
   try {
-    const { userNum } = req;
+    const { userNum } = req.query;
     const url = `http://13.56.84.183:8080/sendSms?userNum=${userNum}`;
     const headers = {
       'Access-Control-Allow-Origin': '*',

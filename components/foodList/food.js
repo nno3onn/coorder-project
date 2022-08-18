@@ -6,16 +6,16 @@ import styles from './food.module.scss';
 const Food = ({ info }) => {
   const router = useRouter();
   const { STOR_CD } = router.query;
-  const { PRICE, STOR_NM, MENU_NM, MENU_DETL } = info;
+  const { PRICE, STOR_NM, MENU_CD, MENU_NM, MENU_DETL } = info;
 
   return (
     <>
-      <Link href={`/store/${STOR_CD}/food/${MENU_NM}`}>
+      <Link href={`/store/${STOR_CD}/food/${MENU_CD}`}>
         <div className={styles['food-wrapper']}>
           <div
             className={styles['img-wrapper']}
             style={{
-              background: `url(/images/food/${STOR_NM}/${MENU_NM})`,
+              background: `url(/images/food/${STOR_CD}/${MENU_CD}.jpg)`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}

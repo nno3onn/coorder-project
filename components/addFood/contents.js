@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { v4 } from 'uuid';
 
-import getOption from 'lib/getApi/getOption';
+import getSideMenu from 'lib/getApi/getSideMenu';
+import getFoodInfo from 'lib/getFoodInfo';
+import sortBySideMenutype from 'lib/sortBySideMenutype';
 
 import CountBox from './countbox';
 import AddButton from './addButton';
@@ -12,41 +14,40 @@ import styles from './contents.module.scss';
 
 const AddFoodContents = () => {
   const router = useRouter();
-  const { foodName } = router.query;
-  const [options, setOptions] = useState([]);
+  const { STOR_CD, MENU_CD } = router.query;
+  const [options, setOptions] = useState();
+  const [foodInfo, setFoodInfo] = useState();
+
+  const getFood = async () => {
+    const info = await getFoodInfo({ STOR_CD, MENU_CD });
+    setFoodInfo(info);
+  };
 
   const getOptions = async () => {
-    const data = await getOption(foodName);
-    return data;
+    const data = await getSideMenu({ STOR_CD, MENU_CD });
+    const sorted = sortBySideMenutype(data);
+    setOptions(sorted);
   };
-  useEffect(() => {
-    const opt = getOptions();
-    setOptions(opt);
-  }, []);
 
-  // const options = [
-  //   {
-  //     초밥: [
-  //       { n: '여부초밥 2P', c: 0, isCount: false },
-  //       { n: '참치초밥 2P', c: 300, isCount: false },
-  //     ],
-  //   },
-  //   {
-  //     토핑추가: [
-  //       { n: '고기추가', c: 1000, isCount: true },
-  //       { n: '상추추가', c: 500, isCount: true },
-  //     ],
-  //   },
-  // ];
+  useEffect(() => {
+    getFood();
+    getOptions();
+  }, [STOR_CD]);
 
   return (
     <div className={styles.container}>
-      <div className={styles['foodName-wrapper']}>{foodName}</div>
-      {options.map((option) => (
-        <div className={styles['option-wrapper']} key={v4()}>
-          <Option option={option} />
+      {foodInfo && (
+        <div className={styles['foodName-wrapper']}>
+          <div className={styles.name}>{foodInfo.MENU_NM}</div>
+          <div className={styles.cost}>{foodInfo.PRICE.toLocaleString()}원</div>
         </div>
-      ))}
+      )}
+      {options &&
+        Object.entries(options).map(([k, v], i) => (
+          <div className={styles['option-wrapper']} key={v4()}>
+            <Option type={k} option={v} optionIndex={i} />
+          </div>
+        ))}
       <div className={styles['option-wrapper']}>
         <div className={styles['info-wrapper']}>
           <div className={styles.title}>수량</div>

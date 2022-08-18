@@ -2,8 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { v4 } from 'uuid';
 
-import sortByMenutype from 'lib/sortByMenuType';
-
+import sortByMenutype from 'lib/sortByMenutype';
 import Food from './food';
 
 import styles from './menu.module.scss';

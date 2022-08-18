@@ -1,9 +1,7 @@
 @import '/styles/color.scss';
 
 .container {
-  width: 100%;
   min-height: 30vh;
-
   position: relative;
   z-index: 999;
   top: -10vh;
@@ -15,9 +13,21 @@
 .btn-wrapper {
   display: flex;
   flex-direction: row;
+  // width: 100%;
+
   align-items: center;
 
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   .btn-type {
+    min-width: fit-content;
     font-weight: bold;
     background-color: $color-grey-2;
     color: $color-white;

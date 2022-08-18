@@ -2,9 +2,9 @@ import axios from 'axios';
 
 export default async (req, res) => {
   try {
-    const { STOR_CD } = req.query;
+    const { STOR_CD, MENU_CD } = req.query;
 
-    const url = `http://13.56.84.183:8080/getOption?storCd=${STOR_CD}`;
+    const url = `http://13.56.84.183:8080/getSideMenu?storCd=${STOR_CD}&menuCd=${MENU_CD}`;
     const headers = {
       'Access-Control-Allow-Origin': '*',
     };

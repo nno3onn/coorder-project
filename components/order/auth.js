@@ -20,7 +20,8 @@ const Auth = ({ setAuth, phoneRef }) => {
     }
     const res = await sendSms(phone);
     if (res) {
-      return setIsSend(true);
+      setIsSend(true);
+      return alert('인증번호가 발송되었습니다.');
     }
     return setIsSend(false);
   };

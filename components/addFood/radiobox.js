@@ -9,13 +9,13 @@ const Click = styled.div`
   padding: 0 10px;
 `;
 
-const RadioBox = ({ name, cost, index, isSelected, setSelectedIndex }) => {
+const RadioBox = ({ name, cost, optionIndex, index, isSelected, setSelectedIndex }) => {
   const dispatch = useDispatch();
   const options = useSelector((state) => state.optionReducer);
 
   useEffect(() => {
     if (index === 0) {
-      dispatch(updateAction({ name, cost, cnt: 0 }));
+      dispatch(updateAction({ name, cost, cnt: 0, optionIndex }));
     }
   }, []);
 
@@ -30,7 +30,7 @@ const RadioBox = ({ name, cost, index, isSelected, setSelectedIndex }) => {
       delete opt[deleteItem];
     }
     opt[name] = { cost, cnt: 0 };
-    dispatch(updateAction({ name, cost, cnt: 0 }));
+    dispatch(updateAction({ name, cost, cnt: 0, optionIndex }));
   };
 
   return (

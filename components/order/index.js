@@ -49,7 +49,7 @@ const Order = () => {
         reqCtnt: message,
         tel: phoneRef.current.value.substring(3),
         dlvryTime: time,
-        dlvryPlace: place,
+        dlvrAddr: place,
         pymntPrice: totalCost,
         pymntCtnt: msg,
       });

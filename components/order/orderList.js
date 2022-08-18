@@ -40,7 +40,7 @@ const OrderList = ({ setTotalCost }) => {
           {orderFood.map((food, index) => (
             <div key={v4()}>
               <div className={styles.wrapper}>
-                <FoodImage img={`/public/images/food/${STOR_CD}/${food.foodName}.jpg`} />
+                <FoodImage img={`/images/food/${STOR_CD}/${food.foodCode}.jpg`} />
                 <div className={styles['list-wrapper']}>
                   <div className={styles['food-header']}>
                     <div className={styles.foodName}>{food.foodName}</div>

@@ -4,15 +4,11 @@ import Boxs from './boxs';
 
 import styles from './option.module.scss';
 
-const Option = ({ option }) => (
+const Option = ({ type, option, optionIndex }) => (
   <>
-    {Object.entries(option).map(([title, v]) => (
-      <div key={v4()}>
-        <div className={styles.title}>{title}</div>
-        <div className={styles.border} />
-        <Boxs v={v} />
-      </div>
-    ))}
+    <div className={styles.title}>{type}</div>
+    <div className={styles.border} />
+    <Boxs option={option} optionIndex={optionIndex} />
   </>
 );
 

@@ -1,5 +1,4 @@
 import getStoreData from 'lib/getStoreData';
-import { useEffect } from 'react';
 import styled from 'styled-components';
 import styles from './background.module.scss';
 
