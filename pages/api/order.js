@@ -2,8 +2,11 @@ import axios from 'axios';
 
 export default async (req, res) => {
   try {
-    const { storCd, reqCtnt, tel, dlvryTime, dlvrAddr, pymntPrice, pymntCtnt } = req;
-    const url = `http://13.56.84.183:8080/orderReq?storCd=${storCd}&reqCtnt=${reqCtnt}&tel=${tel}&dlvryTime=${dlvryTime}&dlvrAddr=${dlvrAddr}&pymntPrice=${pymntPrice}&pymntCtnt=${pymntCtnt}`;
+    console.log(req.query);
+    const { storCd, reqCtnt, tel, dlvryTime, dlvrAddr, pymntPrice, pymntCtnt } = req.query;
+    const url = `http://13.56.84.183:8080/orderReq?storCd=${storCd}&reqCtnt=${reqCtnt}&tel=${tel}&dlvryTime=${encodeURIComponent(
+      dlvryTime,
+    )}&dlvrAddr=${encodeURIComponent(dlvrAddr)}&pymntPrice=${pymntPrice}&pymntCtnt=${encodeURIComponent(pymntCtnt)}`;
     const headers = {
       'Access-Control-Allow-Origin': '*',
     };

@@ -1,10 +1,11 @@
-import order from 'lib/getApi/order';
-import { clearAction } from 'lib/store/modules/foodReducer';
 import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Auth from './auth';
 
+import order from 'lib/getApi/order';
+import { clearAction } from 'lib/store/modules/foodReducer';
+
+import Auth from './auth';
 import CompleteOrder from './complete';
 import styles from './index.module.scss';
 import OrderList from './orderList';
@@ -32,7 +33,8 @@ const Order = () => {
   };
 
   const onOrder = async () => {
-    if (auth) {
+    //*! test!! 아래에 원래 auth임
+    if (!auth) {
       let msg = '';
 
       data.forEach((ord) => {
@@ -44,7 +46,7 @@ const Order = () => {
         msg += `${ord.foodName} ${ord.foodCnt}개 (${opt}) | `;
       });
 
-      const res = await order({
+      const { result } = await order({
         storCd: STOR_CD,
         reqCtnt: message,
         tel: phoneRef.current.value.substring(3),
@@ -53,11 +55,11 @@ const Order = () => {
         pymntPrice: totalCost,
         pymntCtnt: msg,
       });
-
-      if (res) {
-        dispatch(clearAction());
-        setTimeout(() => router.push('/main'), 2000);
-        return setComplete(true);
+      console.log(1, result);
+      if (result === 'true') {
+        // dispatch(clearAction());
+        // setTimeout(() => router.push('/main'), 2000);
+        // return setComplete(true);
       }
       return alert('다시 시도해주세요.');
     }

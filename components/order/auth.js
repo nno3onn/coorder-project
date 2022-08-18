@@ -19,7 +19,6 @@ const Auth = ({ setAuth, phoneRef }) => {
       return alert('올바른 휴대폰 번호를 입력해주세요.');
     }
     const { result } = await sendSms(phone);
-    console.log(result);
     if (result === 'true') {
       setIsSend(true);
       return alert('인증번호가 발송되었습니다.');
