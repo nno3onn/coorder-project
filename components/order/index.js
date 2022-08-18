@@ -34,7 +34,7 @@ const Order = () => {
 
   const onOrder = async () => {
     //*! test!! 아래에 원래 auth임
-    if (!auth) {
+    if (auth) {
       let msg = '';
 
       data.forEach((ord) => {
@@ -55,11 +55,10 @@ const Order = () => {
         pymntPrice: totalCost,
         pymntCtnt: msg,
       });
-      console.log(1, result);
       if (result === 'true') {
-        // dispatch(clearAction());
-        // setTimeout(() => router.push('/main'), 2000);
-        // return setComplete(true);
+        dispatch(clearAction());
+        setTimeout(() => router.push('/main'), 2000);
+        return setComplete(true);
       }
       return alert('다시 시도해주세요.');
     }
