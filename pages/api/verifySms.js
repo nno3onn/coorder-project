@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default async (req, res) => {
   try {
-    const { userNum, authNum } = req;
+    const { userNum, authNum } = req.query;
     const url = `http://13.56.84.183:8080/check?userNum=${userNum}&authNum=${authNum}`;
     const headers = {
       'Access-Control-Allow-Origin': '*',

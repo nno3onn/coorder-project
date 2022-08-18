@@ -18,8 +18,9 @@ const Auth = ({ setAuth, phoneRef }) => {
     if (!phoneFormat(phone)) {
       return alert('올바른 휴대폰 번호를 입력해주세요.');
     }
-    const res = await sendSms(phone);
-    if (res) {
+    const { result } = await sendSms(phone);
+    console.log(result);
+    if (result === 'true') {
       setIsSend(true);
       return alert('인증번호가 발송되었습니다.');
     }
@@ -31,12 +32,12 @@ const Auth = ({ setAuth, phoneRef }) => {
     const verify = verifyRef.current.value;
 
     if (isSend) {
-      const res = await verifySms(phone, verify);
-      if (res) {
+      const { result } = await verifySms(phone, verify);
+      if (result === 'true') {
         setAuth(true);
         return alert('인증이 확인되었습니다.');
       }
-      return alert('다시 시도해주세요.');
+      return alert('인증번호가 다릅니다.');
     }
     return alert('인증번호를 받으세요.');
   };
