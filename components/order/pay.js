@@ -1,10 +1,10 @@
 import styles from './pay.module.scss';
 
-const Pay = ({ paymethod, handleClick }) => (
+const Pay = ({ method, handleClick }) => (
   <div className={styles['pay-wrapper']}>
-    <div className={styles.pay} onClick={handleClick('kakao')}>
+    <div className={styles.pay} onClick={handleClick('카카오페이')}>
       <img
-        src={`/icons/checkbox_${paymethod === 'kakao' ? 'check' : 'default'}.png`}
+        src={`/icons/checkbox_${method === '카카오페이' ? 'check' : 'default'}.png`}
         alt="check"
         className={styles.checkbox}
       />
@@ -15,9 +15,9 @@ const Pay = ({ paymethod, handleClick }) => (
         결제하기
       </p>
     </div>
-    <div className={styles.pay} onClick={handleClick('naver')}>
+    <div className={styles.pay} onClick={handleClick('네이버페이')}>
       <img
-        src={`/icons/checkbox_${paymethod === 'naver' ? 'check' : 'default'}.png`}
+        src={`/icons/checkbox_${method === '네이버페이' ? 'check' : 'default'}.png`}
         alt="check"
         className={styles.checkbox}
       />
@@ -30,7 +30,7 @@ const Pay = ({ paymethod, handleClick }) => (
     </div>
     <div className={styles.pay} onClick={handleClick('other')}>
       <img
-        src={`/icons/checkbox_${paymethod === 'other' ? 'check' : 'default'}.png`}
+        src={`/icons/checkbox_${method === 'other' ? 'check' : 'default'}.png`}
         alt="check"
         className={styles.checkbox}
       />
