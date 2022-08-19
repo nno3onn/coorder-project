@@ -25,7 +25,7 @@ const Order = () => {
   const [complete, setComplete] = useState(false);
   const [message, setMessage] = useState('');
   const [auth, setAuth] = useState(false);
-  const [method, setMethod] = useState('카카오페이');
+  const [method, setMethod] = useState('kakao');
   const phoneRef = useRef();
 
   const onInputChange = (e) => () => {

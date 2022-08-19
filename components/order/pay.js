@@ -2,9 +2,9 @@ import styles from './pay.module.scss';
 
 const Pay = ({ method, handleClick }) => (
   <div className={styles['pay-wrapper']}>
-    <div className={styles.pay} onClick={handleClick('카카오페이')}>
+    <div className={styles.pay} onClick={handleClick('kakao')}>
       <img
-        src={`/icons/checkbox_${method === '카카오페이' ? 'check' : 'default'}.png`}
+        src={`/icons/checkbox_${method === 'kakao' ? 'check' : 'default'}.png`}
         alt="check"
         className={styles.checkbox}
       />
@@ -15,9 +15,9 @@ const Pay = ({ method, handleClick }) => (
         결제하기
       </p>
     </div>
-    <div className={styles.pay} onClick={handleClick('네이버페이')}>
+    <div className={styles.pay} onClick={handleClick('npay')}>
       <img
-        src={`/icons/checkbox_${method === '네이버페이' ? 'check' : 'default'}.png`}
+        src={`/icons/checkbox_${method === 'npay' ? 'check' : 'default'}.png`}
         alt="check"
         className={styles.checkbox}
       />
