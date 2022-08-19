@@ -1,0 +1,25 @@
+@import '/styles/color.scss';
+
+.container {
+  position: fixed;
+  bottom: 150px;
+  right: 30px;
+
+  border-radius: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100px;
+  height: 100px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.txt {
+  color: white;
+  font-weight: bold;
+}

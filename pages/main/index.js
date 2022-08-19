@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import StoreList from 'components/storeList';
 import Modal from 'components/modal';
+import KakaoButton from 'components/storeList/kakaoButton';
 
 const Container = styled.div`
   min-width: 100vw;
@@ -13,6 +14,7 @@ const MainPage = () => (
   <Container>
     <StoreList />
     <Modal />
+    <KakaoButton />
   </Container>
 );
 
