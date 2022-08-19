@@ -34,7 +34,7 @@ const Order = () => {
   };
 
   const onOrder = async () => {
-    if (auth) {
+    if (!auth) {
       let foodText = '';
 
       data.forEach((ord) => {

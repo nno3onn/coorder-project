@@ -28,9 +28,9 @@ const Pay = ({ method, handleClick }) => (
         결제하기
       </p>
     </div>
-    <div className={styles.pay} onClick={handleClick('other')}>
+    <div className={styles.pay} onClick={handleClick('카드')}>
       <img
-        src={`/icons/checkbox_${method === 'other' ? 'check' : 'default'}.png`}
+        src={`/icons/checkbox_${method === '카드' ? 'check' : 'default'}.png`}
         alt="check"
         className={styles.checkbox}
       />
