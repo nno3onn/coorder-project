@@ -24,7 +24,7 @@ const ModalContents = ({ setOpen }) => {
       <div className={styles['contents-wrapper']}>
         {places.map((p) => (
           <div className={styles['btn-1']} key={v4()}>
-            <PrimaryButton value={p} handleClick={onPlace(p)} selected={placeReducer === p} />
+            <PrimaryButton value={p} handleClick={onPlace(p)} selected={placeReducer.selectedPlace === p} />
           </div>
         ))}
       </div>
@@ -42,7 +42,7 @@ const ModalContents = ({ setOpen }) => {
       <div className={styles['contents-wrapper']}>
         {times.map((t) => (
           <div className={styles['btn-2']} key={v4()}>
-            <PrimaryButton value={t} handleClick={onTime(t)} selected={timeReducer === t} />
+            <PrimaryButton value={t} handleClick={onTime(t)} selected={timeReducer.selectedTime === t} />
           </div>
         ))}
       </div>
