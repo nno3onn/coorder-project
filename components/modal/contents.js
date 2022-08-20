@@ -14,8 +14,8 @@ const ModalContents = ({ setOpen }) => {
   const { placeReducer, timeReducer } = useSelector((state) => state);
   console.log(placeReducer, timeReducer);
 
-  const onPlace = (p) => () => dispatch(updatPlaceAction({ selectedPlace: p }));
-  const onTime = (t) => () => dispatch(updateTimeAction({ selectedTime: t }));
+  const onPlace = (p) => () => dispatch(updatPlaceAction(p));
+  const onTime = (t) => () => dispatch(updateTimeAction(t));
   const onComplete = () => setOpen(false);
 
   return (
