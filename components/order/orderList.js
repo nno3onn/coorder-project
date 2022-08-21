@@ -19,11 +19,11 @@ const OrderList = ({ setTotalCost }) => {
     let sum = 0;
 
     orderFood.forEach((f) => {
-      sum += f.foodCost;
+      let c = f.foodCost;
       if (f.options) {
-        Object.values(f.options).forEach((opt) => (sum += opt.cost * opt.cnt));
+        Object.values(f.options).forEach((opt) => (c += opt.cost * opt.cnt));
       }
-      sum *= f.foodCnt;
+      sum = c * f.foodCnt;
     });
     setTotalCost(sum);
     return sum;
