@@ -21,7 +21,7 @@ const OrderList = ({ setTotalCost }) => {
     orderFood.forEach((f) => {
       let c = f.foodCost;
       if (f.options) {
-        Object.values(f.options).forEach((opt) => (c += opt.cost * opt.cnt));
+        Object.values(f.options).forEach((opt) => (c += opt.cost * (opt.cnt === 0 ? 1 : opt.cnt)));
       }
       sum += c * f.foodCnt;
     });
