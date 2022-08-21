@@ -23,7 +23,7 @@ const OrderList = ({ setTotalCost }) => {
       if (f.options) {
         Object.values(f.options).forEach((opt) => (c += opt.cost * opt.cnt));
       }
-      sum = c * f.foodCnt;
+      sum += c * f.foodCnt;
     });
     setTotalCost(sum);
     return sum;
