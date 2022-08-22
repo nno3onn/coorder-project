@@ -12,7 +12,6 @@ const ModalContents = ({ setOpen }) => {
   const dispatch = useDispatch();
   const { places, times } = dataConfigs;
   const { placeReducer, timeReducer } = useSelector((state) => state);
-  console.log(placeReducer, timeReducer);
 
   const onPlace = (p) => () => dispatch(updatPlaceAction(p));
   const onTime = (t) => () => dispatch(updateTimeAction(t));

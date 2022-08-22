@@ -39,6 +39,7 @@ const Boxs = ({ option, optionIndex }) => {
               <RadioBox
                 name={info.S_MENU_NM}
                 cost={info.PRICE}
+                max={info.MAX}
                 optionIndex={optionIndex}
                 index={index}
                 isSelected={index === selectedIndex}
