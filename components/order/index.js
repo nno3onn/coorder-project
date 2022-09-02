@@ -11,6 +11,7 @@ import CompleteOrder from './complete';
 import styles from './index.module.scss';
 import OrderList from './orderList';
 import Pay from './pay';
+import OrderInfo from './info';
 
 const Order = () => {
   const router = useRouter();
@@ -98,6 +99,12 @@ const Order = () => {
             <div className={styles.title}>결제수단</div>
             <div className={styles['contents-wrapper']}>
               <Pay method={method} handleClick={handleClick} />
+            </div>
+          </div>
+          <div className={styles.wrapper}>
+            <div className={styles.title}>주문정보</div>
+            <div className={styles['contents-wrapper']}>
+              <OrderInfo />
             </div>
           </div>
           <div className={styles['btn-wrapper']} onClick={onOrder}>
