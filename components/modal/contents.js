@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 } from 'uuid';
 
@@ -12,10 +13,32 @@ const ModalContents = ({ setOpen }) => {
   const dispatch = useDispatch();
   const { places, times } = dataConfigs;
   const { placeReducer, timeReducer } = useSelector((state) => state);
+  const nowHour = new Date().getHours();
 
   const onPlace = (p) => () => dispatch(updatPlaceAction(p));
-  const onTime = (t) => () => dispatch(updateTimeAction(t));
+  const onTime = (t) => () => {
+    if (t > nowHour + 1) {
+      dispatch(updateTimeAction(t));
+    }
+  };
+
   const onComplete = () => setOpen(false);
+
+  useEffect(() => {
+    let setHour;
+    if (nowHour < 11) {
+      setHour = 12;
+    } else if (nowHour < 12) {
+      setHour = 13;
+    } else if (nowHour < 17) {
+      setHour = 18;
+    } else {
+      setHour = 19;
+    }
+    dispatch(updateTimeAction(setHour));
+  }, []);
+
+  const isDisabledTime = (t) => t <= nowHour + 1;
 
   return (
     <div className={styles.container}>
@@ -41,7 +64,12 @@ const ModalContents = ({ setOpen }) => {
       <div className={styles['contents-wrapper']}>
         {times.map((t) => (
           <div className={styles['btn-2']} key={v4()}>
-            <PrimaryButton value={t} handleClick={onTime(t)} selected={timeReducer === t} />
+            <PrimaryButton
+              value={`${t}:00`}
+              handleClick={onTime(t)}
+              selected={timeReducer === t}
+              isDisabled={isDisabledTime(t)}
+            />
           </div>
         ))}
       </div>

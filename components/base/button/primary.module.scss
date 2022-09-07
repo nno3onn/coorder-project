@@ -25,3 +25,11 @@
 .selected {
   background-color: $color-primary;
 }
+
+.disabled {
+  background-color: $color-grey-1;
+  color: $color-grey-2;
+  &:hover {
+    background-color: $color-grey-1;
+  }
+}

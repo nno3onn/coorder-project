@@ -11,7 +11,7 @@ const OrderInfo = () => {
       {placeReducer}
       <div className={styles.border} />
       <div className={styles.subtitle}>시간</div>
-      {timeReducer}
+      {timeReducer}:00
     </>
   );
 };

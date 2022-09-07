@@ -1,7 +1,10 @@
 import styles from './primary.module.scss';
 
-const PrimaryButton = ({ value, handleClick, selected }) => (
-  <div className={`${styles.container} ${selected && styles.selected}`} onClick={handleClick}>
+const PrimaryButton = ({ value, handleClick, selected, isDisabled = false }) => (
+  <div
+    className={`${styles.container} ${isDisabled ? styles.disabled : selected && styles.selected}`}
+    onClick={handleClick}
+  >
     {value}
   </div>
 );
