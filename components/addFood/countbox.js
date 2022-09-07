@@ -4,14 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import styles from './countbox.module.scss';
 
-// isOption = false => 수량
-const CountBox = ({ name, cost, isCount = false }) => {
+const CountBox = ({ name, cost, maxCount = 99, isCount = false }) => {
   const dispatch = useDispatch();
   const [cnt, setCnt] = useState(isCount ? 1 : 0);
   const options = useSelector((state) => state.optionReducer);
 
   const onCount = (v) => () => {
     if (!(cnt === (isCount ? 1 : 0) && v === -1)) {
+      // if (!((v === -1 && cnt === (isCount ? 1 : 0)) || (v === 1 && cnt === maxCount))) {
       const count = cnt + v;
       setCnt(count);
 

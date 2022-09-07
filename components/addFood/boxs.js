@@ -36,6 +36,7 @@ const Boxs = ({ option, optionIndex }) => {
             {info.IS_COUNT === 'Y' ? (
               <CountBox name={info.S_MENU_NM} cost={info.PRICE} optionIndex={optionIndex} />
             ) : (
+              // <CountBox name={info.S_MENU_NM} cost={info.PRICE} maxCount={info.MAX_CNT} optionIndex={optionIndex} />
               <RadioBox
                 name={info.S_MENU_NM}
                 cost={info.PRICE}
