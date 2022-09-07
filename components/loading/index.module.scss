@@ -1,5 +1,4 @@
 @import '/styles/color.scss';
-@import url('https://cdn.jsdelivr.net/gh/webfontworld/gmarket/GmarketSansBold.ttf') format('truetype');
 
 .container {
   width: 100vw;
@@ -11,7 +10,7 @@
   justify-content: center;
 
   .logo {
-    font-family: 'GmarketSans';
+    font-family: -apple-system;
     font-weight: bold;
     font-size: 46px;
     color: $color-white;
