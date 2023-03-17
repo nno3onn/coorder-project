@@ -40,3 +40,5 @@
 🔹 발표 공유회 사진
 
 <img src="https://user-images.githubusercontent.com/60952506/225840662-f5aab2ce-d1b7-442b-bbc2-1b84b9d86eff.png" width="500"/>
+<img src="https://user-images.githubusercontent.com/60952506/225841234-a719c20e-f1d0-4c9a-b75f-f598eac0b31f.png" width="500"/>
+
