@@ -19,6 +19,13 @@
 <br>
 <br>
 
+## 🎥 시연 영상
+https://www.youtube.com/watch?v=Qlzwt20AQ9g
+
+<br>
+<br>
+
+
 ## 💻 담당 기능 (App)
 - 프론트엔드 개발 담당 (프론트엔드 1명, 백엔드 1명)
 - 서비스 UI 구현
