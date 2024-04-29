@@ -12,6 +12,13 @@
 <br>
 <br>
 
+## 🎥 시연 영상
+https://www.youtube.com/watch?v=Qlzwt20AQ9g
+
+<br>
+<br>
+
+
 ## 🛠️ 기술 스택
 - Next.js, Redux
 - styled-components, JWT
@@ -19,11 +26,6 @@
 <br>
 <br>
 
-## 🎥 시연 영상
-https://www.youtube.com/watch?v=Qlzwt20AQ9g
-
-<br>
-<br>
 
 
 ## 💻 담당 기능 (App)
